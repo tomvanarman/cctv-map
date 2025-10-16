@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>CCTV cameras — Rotterdam</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet" />
+  <style>
+    body, html, #map { height: 100%; margin: 0; }
+    .thumb { max-width: 220px; max-height: 160px; display: block; }
+    .popup { padding: 6px; }
+  </style>
+</head>
+<body>
+<div id="map"></div>
+
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
+<script>
+  mapboxgl.accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN_HERE';
+
+  const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v12',
+    center: [4.47917, 51.9225], // Rotterdam
+    zoom: 12
+  });
+
+  async function loadData() {
+    const res = await fetch('cameras.geojson');
+    const points = await res.json();
+
+    // 1) 50m buffer polygons around each point (true meters)
+    const buffers = turf.buffer(points, 50, { units: 'meters' });
+
+    // 2) Add sources
+    map.addSource('cameras', { type: 'geojson', data: points });
+    map.addSource('buffers', { type: 'geojson', data: buffers });
+
+    // 3) Draw 50m circles (fill + outline)
+    map.addLayer({
+      id: 'buffers-fill',
+      type: 'fill',
+      source: 'buffers',
+      paint: {
+        'fill-color': '#3b82f6',
+        'fill-opacity': 0.15
+      }
+    });
+    map.addLayer({
+      id: 'buffers-outline',
+      type: 'line',
+      source: 'buffers',
+      paint: {
+        'line-color': '#3b82f6',
+        'line-width': 1
+      }
+    });
+
+    // 4) Draw the point markers
+    map.addLayer({
+      id: 'cameras-points',
+      type: 'circle',
+      source: 'cameras',
+      paint: {
+        'circle-radius': 5,
+        'circle-color': '#1f2937',
+        'circle-stroke-color': '#ffffff',
+        'circle-stroke-width': 1
+      }
+    });
+
+    // 5) Rollover thumbnail popup using the image URL property
+    const popup = new mapboxgl.Popup({
+      closeButton: false,
+      closeOnClick: false,
+      className: 'popup',
+      offset: 12
+    });
+
+    map.on('mouseenter', 'cameras-points', (e) => {
+      map.getCanvas().style.cursor = 'pointer';
+      const f = e.features[0];
+      const props = f.properties || {};
+      const img = props.image_url || props['1_Make_a_photo_of_th'] || '';
+      const uuid = props.ec5_uuid || '';
+      const html = `
+        <div class="popup">
+          ${img ? `<img class="thumb" src="${img}" alt="camera ${uuid}" />` : '<em>No image URL</em>'}
+          ${uuid ? `<div style="margin-top:4px;"><strong>${uuid}</strong></div>` : ''}
+        </div>
+      `;
+      popup.setLngLat(e.lngLat).setHTML(html).addTo(map);
+    });
+
+    map.on('mousemove', 'cameras-points', (e) => {
+      // keep popup glued to cursor while hovering
+      popup.setLngLat(e.lngLat);
+    });
+
+    map.on('mouseleave', 'cameras-points', () => {
+      map.getCanvas().style.cursor = '';
+      popup.remove();
+    });
+  }
+
+  map.on('load', loadData);
+</script>
+</body>
+</html>
