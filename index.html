@@ -15,7 +15,6 @@
   <div id="map"></div>
 
   <script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
   <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoidG9tdmFuYXJtYW4iLCJhIjoiRDlFeWFVdyJ9.B6ZgpP0CsDlAF1D1emvosg';
 
@@ -26,18 +25,24 @@
       zoom: 12
     });
 
+    async function loadJSON(path) {
+      const res = await fetch(path + '?v=' + Date.now()); // cache-bust
+      if (!res.ok) throw new Error('Failed to load ' + path);
+      return res.json();
+    }
+
     map.on('load', async () => {
-      // 1) Load your points (same-repo path works on GitHub Pages)
-      const points = await fetch('cameras.geojson?v=1')', { cache: 'no-store' }).then(r => r.json());
+      // 1) Load precomputed data
+      const [points, buffers] = await Promise.all([
+        loadJSON('cameras.geojson'),
+        loadJSON('buffers-50m.geojson')
+      ]);
 
-      // 2) Create true 50 m buffers (polygons)
-      const buffers = turf.buffer(points, 50, { units: 'meters' });
-
-      // 3) Add sources
+      // 2) Add sources
       map.addSource('cameras', { type: 'geojson', data: points });
       map.addSource('buffers', { type: 'geojson', data: buffers });
 
-      // 4) Draw 50 m circles (fill + outline)
+      // 3) Draw buffers (50m circles)
       map.addLayer({
         id: 'buffers-fill',
         type: 'fill',
@@ -51,7 +56,7 @@
         paint: { 'line-color': '#3b82f6', 'line-width': 1 }
       });
 
-      // 5) Draw camera points
+      // 4) Draw camera points
       map.addLayer({
         id: 'cameras-points',
         type: 'circle',
@@ -64,7 +69,7 @@
         }
       });
 
-      // 6) Hover popup with thumbnail
+      // 5) Hover popup with thumbnail
       const popup = new mapboxgl.Popup({
         closeButton: false,
         closeOnClick: false,
@@ -78,13 +83,17 @@
         const p = f.properties || {};
         const img = p.image_url || p['1_Make_a_photo_of_th'] || '';
         const uuid = p.ec5_uuid || p.ec5_uuid_alias || '';
-        popup.setLngLat(e.lngLat).setHTML(`
-          <div class="popup">
-            ${img ? `<img class="thumb" src="${img}" alt="camera ${uuid}" />` : '<em>No image</em>'}
-            ${uuid ? `<div style="margin-top:4px;"><strong>${uuid}</strong></div>` : ''}
-          </div>
-        `).addTo(map);
+        popup
+          .setLngLat(e.lngLat)
+          .setHTML(`
+            <div class="popup">
+              ${img ? `<img class="thumb" src="${img}" alt="camera ${uuid}" />` : '<em>No image</em>'}
+              ${uuid ? `<div style="margin-top:4px;"><strong>${uuid}</strong></div>` : ''}
+            </div>
+          `)
+          .addTo(map);
       });
+
       map.on('mousemove', 'cameras-points', (e) => popup.setLngLat(e.lngLat));
       map.on('mouseleave', 'cameras-points', () => { map.getCanvas().style.cursor = ''; popup.remove(); });
     });
