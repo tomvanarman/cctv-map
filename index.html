@@ -28,7 +28,7 @@
 
     map.on('load', async () => {
       // 1) Load your points (same-repo path works on GitHub Pages)
-      const points = await fetch('cameras.geojson', { cache: 'no-store' }).then(r => r.json());
+      const points = await fetch('cameras.geojson?v=1')', { cache: 'no-store' }).then(r => r.json());
 
       // 2) Create true 50 m buffers (polygons)
       const buffers = turf.buffer(points, 50, { units: 'meters' });
