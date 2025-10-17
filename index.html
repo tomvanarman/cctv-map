@@ -2,54 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>CCTV Map</title>
 
-  <!-- Mapbox GL JS -->
   <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
   <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
 
   <style>
     html, body, #map { height: 100%; margin: 0; }
-    .popup {
-      max-width: 320px;
-      font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-    }
-    .popup img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 8px;
-      margin-bottom: 8px;
-    }
-    .popup .meta {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 4px;
-    }
-    .popup .meta div {
-      background: #f5f5f5;
-      padding: 6px 8px;
-      border-radius: 6px;
-      overflow-wrap: anywhere;
-    }
-    .legend {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: rgba(255,255,255,0.95);
-      border-radius: 10px;
-      padding: 10px 12px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-      font: 13px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      z-index: 1;
-    }
-    .swatch {
-      width: 12px; height: 12px;
-      border-radius: 50%; display: inline-block;
-      background: #1d4ed8; /* Mapbox default-ish blue for circles */
-      margin-right: 6px; vertical-align: -2px;
-    }
+    .popup { max-width: 320px; font: 14px/1.4 -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+    .popup img { width: 100%; height: auto; display: block; border-radius: 8px; margin-bottom: 8px; }
+    .popup .meta { display: grid; grid-template-columns: 1fr; gap: 4px; }
+    .popup .meta div { background: #f5f5f5; padding: 6px 8px; border-radius: 6px; overflow-wrap: anywhere; }
+    .legend { position: absolute; top: 12px; left: 12px; background: rgba(255,255,255,.95); border-radius: 10px; padding: 10px 12px; box-shadow: 0 4px 16px rgba(0,0,0,.12); font: 13px/1.4 -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; z-index: 1; }
+    .swatch { width: 12px; height: 12px; border-radius: 50%; display: inline-block; background: #1d4ed8; margin-right: 6px; vertical-align: -2px; }
   </style>
 </head>
 <body>
@@ -57,125 +24,105 @@
   <div class="legend"><span class="swatch"></span> CCTV camera</div>
 
   <script>
-    // Use your token from the shared style URL
-    mapboxgl.accessToken = "pk.eyJ1IjoidG9tdmFuYXJtYW4iLCJhIjoiRDlFeWFVdyJ9.B6ZgpP0CsDlAF1D1emvosg";
+    mapboxgl.accessToken = 'pk.eyJ1IjoidG9tdmFuYXJtYW4iLCJhIjoiRDlFeWFVdyJ9.B6ZgpP0CsDlAF1D1emvosg';
+    var STYLE_URL = 'mapbox://styles/tomvanarman/cmdlugpsh003401s93pou1z8m';
+    var GEOJSON_URL = 'CCTV-Cameras.geojson';
 
-    // Your custom style
-    const STYLE_URL = "mapbox://styles/tomvanarman/cmdlugpsh003401s93pou1z8m";
-
-    // Path to the attached GeoJSON (must live next to this HTML file)
-    const GEOJSON_URL = "CCTV-Cameras.geojson";
-
-    const map = new mapboxgl.Map({
-      container: "map",
+    var map = new mapboxgl.Map({
+      container: 'map',
       style: STYLE_URL,
-      center: [4.468638, 51.914569], // fallback center (Rotterdam-ish)
-      zoom: 15.37,                   // fallback zoom
+      center: [4.468638, 51.914569],
+      zoom: 15.37,
       antialias: true
     });
 
-    map.addControl(new mapboxgl.NavigationControl({ visualizePitch: true }), "top-right");
-    map.addControl(new mapboxgl.FullscreenControl(), "top-right");
-    map.addControl(new mapboxgl.ScaleControl({ maxWidth: 160, unit: "metric" }));
+    map.addControl(new mapboxgl.NavigationControl({ visualizePitch: true }), 'top-right');
+    map.addControl(new mapboxgl.FullscreenControl(), 'top-right');
+    map.addControl(new mapboxgl.ScaleControl({ maxWidth: 160, unit: 'metric' }));
 
-    // Load the GeoJSON and add to the map
-    fetch(GEOJSON_URL)
-      .then(r => {
-        if (!r.ok) throw new Error("Failed to load " + GEOJSON_URL);
-        return r.json();
-      })
-      .then(geojson => {
-        map.once("styledata", () => {
-          // Add as a source
-          if (!map.getSource("cctv")) {
-            map.addSource("cctv", { type: "geojson", data: geojson });
-          }
+    fetch(GEOJSON_URL).then(function(r){
+      if (!r.ok) throw new Error('Failed to load ' + GEOJSON_URL);
+      return r.json();
+    }).then(function(geojson){
 
-          // Simple circle layer for points
-          if (!map.getLayer("cctv-circles")) {
-            map.addLayer({
-              id: "cctv-circles",
-              type: "circle",
-              source: "cctv",
-              paint: {
-                "circle-radius": [
-                  "interpolate", ["linear"], ["zoom"],
-                  10, 3,
-                  16, 8
-                ],
-                "circle-color": "#1d4ed8",
-                "circle-opacity": 0.7,
-                "circle-stroke-color": "#ffffff",
-                "circle-stroke-width": 1
-              }
-            });
-          }
+      map.once('styledata', function(){
+        if (!map.getSource('cctv')) {
+          map.addSource('cctv', { type: 'geojson', data: geojson });
+        }
 
-          // Fit map to data bounds
-          try {
-            const bounds = new mapboxgl.LngLatBounds();
-            for (const f of geojson.features) {
-              if (f.geometry && f.geometry.type === "Point") {
-                const [lng, lat] = f.geometry.coordinates;
-                bounds.extend([lng, lat]);
-              }
+        if (!map.getLayer('cctv-circles')) {
+          map.addLayer({
+            id: 'cctv-circles',
+            type: 'circle',
+            source: 'cctv',
+            paint: {
+              'circle-radius': ['interpolate', ['linear'], ['zoom'], 10, 3, 16, 8],
+              'circle-color': '#1d4ed8',
+              'circle-opacity': 0.7,
+              'circle-stroke-color': '#ffffff',
+              'circle-stroke-width': 1
             }
-            if (!bounds.isEmpty()) {
-              map.fitBounds(bounds, { padding: 40, maxZoom: 17, duration: 800 });
-            }
-          } catch (e) {
-            console.warn("Could not fit bounds:", e);
-          }
-
-          // Click -> popup with photo + selected metadata
-          map.on("click", "cctv-circles", (e) => {
-            const f = e.features && e.features[0];
-            if (!f) return;
-            const p = f.properties || {};
-
-            const title = p.title || "CCTV Camera";
-            const img = p.image_url ? `<img src="${p.image_url}" alt="Camera photo" loading="lazy" />` : "";
-
-            // Pick a few useful fields if present
-            const lines = [];
-            const fields = [
-              ["Type", p["3_What_kind_of_camer"]],
-              ["Signage", p["4_Do_you_see_a_sign_"]],
-              ["Owner (guess)", p["5_Who_do_you_think_i"]],
-              ["Purpose (guess)", p["6_What_do_you_think_"]],
-              ["Safety feeling", p["7_How_safe_does_this"]],
-            ];
-            for (const [label, val] of fields) {
-              if (val && String(val).trim() !== "") {
-                lines.push(`<div><strong>${label}:</strong> ${String(val)}</div>`);
-              }
-            }
-
-            const html = `
-              <div class="popup">
-                ${img}
-                <div class="meta">
-                  <div><strong>${title}</strong></div>
-                  ${lines.join("")}
-                </div>
-              </div>
-            `;
-
-            new mapboxgl.Popup({ closeOnMove: true, offset: 12 })
-              .setLngLat(e.lngLat)
-              .setHTML(html)
-              .addTo(map);
           });
+        }
 
-          // Pointer cursor
-          map.on("mouseenter", "cctv-circles", () => map.getCanvas().style.cursor = "pointer");
-          map.on("mouseleave", "cctv-circles", () => map.getCanvas().style.cursor = "");
+        try {
+          var bounds = new mapboxgl.LngLatBounds();
+          (geojson.features || []).forEach(function(f){
+            if (f && f.geometry && f.geometry.type === 'Point') {
+              var c = f.geometry.coordinates;
+              if (Array.isArray(c) && c.length === 2) bounds.extend([c[0], c[1]]);
+            }
+          });
+          if (!bounds.isEmpty()) {
+            map.fitBounds(bounds, { padding: 40, maxZoom: 17 });
+          }
+        } catch (e) { console.warn('Could not fit bounds:', e); }
+
+        map.on('click', 'cctv-circles', function(e){
+          if (!e.features || !e.features[0]) return;
+          var f = e.features[0];
+          var p = f.properties || {};
+
+          var title = p.title ? String(p.title) : 'CCTV Camera';
+          var imgHtml = '';
+          if (p.image_url && String(p.image_url).trim() !== '') {
+            imgHtml = '<img src="' + String(p.image_url) + '" alt="Camera photo" loading="lazy">';
+          }
+
+          var rows = [];
+          function addRow(label, val){
+            if (val !== undefined && val !== null && String(val).trim() !== '') {
+              rows.push('<div><strong>' + label + ':</strong> ' + String(val) + '</div>');
+            }
+          }
+          addRow('Type', p['3_What_kind_of_camer']);
+          addRow('Signage', p['4_Do_you_see_a_sign_']);
+          addRow('Owner (guess)', p['5_Who_do_you_think_i']);
+          addRow('Purpose (guess)', p['6_What_do_you_think_']);
+          addRow('Safety feeling', p['7_How_safe_does_this']);
+
+          var html = ''
+            + '<div class="popup">'
+            + imgHtml
+            + '<div class="meta">'
+            + '<div><strong>' + title + '</strong></div>'
+            + rows.join('')
+            + '</div></div>';
+
+          new mapboxgl.Popup({ closeOnMove: true, offset: 12 })
+            .setLngLat(e.lngLat)
+            .setHTML(html)
+            .addTo(map);
         });
-      })
-      .catch(err => {
-        console.error(err);
-        alert("Error loading map data. Open the browser console for details.");
+
+        map.on('mouseenter', 'cctv-circles', function(){ map.getCanvas().style.cursor = 'pointer'; });
+        map.on('mouseleave', 'cctv-circles', function(){ map.getCanvas().style.cursor = ''; });
       });
+
+    }).catch(function(err){
+      console.error(err);
+      alert('Error loading map data. Open the browser console for details.');
+    });
   </script>
 </body>
 </html>
