@@ -1,94 +1,140 @@
-<link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet" />
-<script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
-<style>
-  html, body, #map { height: 100%; margin: 0; }
-  .thumb { max-width: 220px; max-height: 160px; display: block; }
-  .popup { padding: 6px; }
-</style>
-
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>CCTV map (50m buffers + rich popup)</title>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet"/>
+  <style>
+    html,body,#map{height:100%;margin:0}
+    .mapboxgl-popup-content{font:13px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:320px}
+    .meta {margin-top:6px;border-collapse:collapse;width:100%}
+    .meta td{padding:2px 6px;vertical-align:top}
+    .meta td.key{color:#555;white-space:nowrap;width:40%}
+    .thumb{width:100%;max-height:220px;object-fit:cover;border-radius:8px;margin:0 0 6px 0}
+    .badge{display:inline-block;background:#eef2ff;color:#3730a3;border-radius:999px;padding:2px 8px;font-size:12px;margin:0 0 6px 0}
+  </style>
+</head>
+<body>
 <div id="map"></div>
-<script>
-  mapboxgl.accessToken = 'pk.eyJ1IjoidG9tdmFuYXJtYW4iLCJhIjoiRDlFeWFVdyJ9.B6ZgpP0CsDlAF1D1emvosg';
 
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
+<script>
+  // 1) Map init
+  mapboxgl.accessToken = "pk.eyJ1IjoidG9tdmFuYXJtYW4iLCJhIjoiRDlFeWFVdyJ9.B6ZgpP0CsDlAF1D1emvosg";
   const map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v12',
-    center: [4.47917, 51.9225],
+    container: "map",
+    style: "mapbox://styles/mapbox/light-v11",
+    center: [4.9041, 52.3676], // Amsterdam fallback
     zoom: 12
   });
+  map.addControl(new mapboxgl.NavigationControl(), "top-right");
 
-  async function loadJSON(path) {
-    const res = await fetch(path + '?v=' + Date.now());
-    if (!res.ok) throw new Error('Failed to load ' + path);
-    return res.json();
+  // Helpers
+  const safe = v => (v === null || v === undefined || (typeof v === "number" && Number.isNaN(v)) ? "" : String(v));
+  const fmtDate = iso => {
+    try { return new Date(iso).toLocaleString(); } catch { return safe(iso); }
+  };
+  const firstUrl = (p, keys) => {
+    for (const k of keys) {
+      const v = safe(p[k]);
+      if (v && /^https?:\/\//i.test(v)) return v;
+    }
+    return "";
+  };
+
+  function popupHTML(props) {
+    const p = props || {};
+    const img = firstUrl(p, ["image_url", "1_Make_a_photo_of_th"]);
+    const kind = safe(p["3_What_kind_of_camer"]);
+    const title = safe(p.title) || kind || "CCTV camera";
+    const rows = [
+      ["Type", kind],
+      ["Sign present", safe(p["4_Do_you_see_a_sign_"])],
+      ["Owner (guess)", safe(p["5_Who_do_you_think_i"])],
+      ["Purpose (guess)", safe(p["6_What_do_you_think_"])],
+      ["Safety perception", safe(p["7_How_safe_does_this"])],
+      ["Created", fmtDate(p.created_at)],
+      ["Uploaded", fmtDate(p.uploaded_at)],
+      ["UUID", safe(p.ec5_uuid)]
+    ].filter(([,v]) => v);
+
+    return `
+      ${img ? `<img class="thumb" src="${img}" alt="${title}">` : ""}
+      ${kind ? `<span class="badge">${kind}</span>` : ""}
+      <h3 style="margin:0 0 6px 0;font-size:14px;">${title}</h3>
+      <table class="meta">
+        ${rows.map(([k,v]) => `<tr><td class="key"><b>${k}</b></td><td>${v}</td></tr>`).join("")}
+      </table>
+    `;
   }
 
-  map.on('load', async () => {
-    // 1) Always load points
-    const points = await loadJSON('cameras.geojson');
+  async function load() {
+    // 2) Load your GeoJSON (keep file next to this HTML)
+    const url = "./cameras.geojson";
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`Failed to load ${url}`);
+    const cameras = await res.json();
 
-    // 2) Try to load precomputed buffers; if not found, compute with Turf
-    let buffers;
-    try {
-      buffers = await loadJSON('buffers-50m.geojson');
-      console.log('Using precomputed buffers.');
-    } catch (e) {
-      console.warn('buffers-50m.geojson not found — computing 50m buffers with Turf on the fly.');
-      buffers = turf.buffer(points, 50, { units: 'meters' });
+    // Ensure a FeatureCollection
+    const pts = cameras.type === "FeatureCollection" ? cameras : { type:"FeatureCollection", features:[cameras] };
+
+    // 3) Build 50m buffers client-side (no separate file!)
+    const buffers = turf.buffer(pts, 50, { units: "meters" });
+
+    // 4) Fit bounds
+    if (pts.features.length) {
+      const bbox = turf.bbox(buffers);
+      map.fitBounds([[bbox[0], bbox[1]], [bbox[2], bbox[3]]], { padding: 40, maxZoom: 17 });
     }
 
-    // 3) Add sources
-    map.addSource('cameras', { type: 'geojson', data: points });
-    map.addSource('buffers', { type: 'geojson', data: buffers });
+    // 5) Sources
+    map.addSource("cameras", { type: "geojson", data: pts });
+    map.addSource("buffers", { type: "geojson", data: buffers });
 
-    // 4) Draw buffers
+    // 6) Layers
     map.addLayer({
-      id: 'buffers-fill',
-      type: 'fill',
-      source: 'buffers',
-      paint: { 'fill-color': '#3b82f6', 'fill-opacity': 0.15 }
+      id: "buffer-fill",
+      type: "fill",
+      source: "buffers",
+      paint: { "fill-color": "#3b82f6", "fill-opacity": 0.12 }
     });
     map.addLayer({
-      id: 'buffers-outline',
-      type: 'line',
-      source: 'buffers',
-      paint: { 'line-color': '#3b82f6', 'line-width': 1 }
+      id: "buffer-outline",
+      type: "line",
+      source: "buffers",
+      paint: { "line-color": "#3b82f6", "line-width": 1.2, "line-opacity": 0.8 }
     });
-
-    // 5) Draw points
     map.addLayer({
-      id: 'cameras-points',
-      type: 'circle',
-      source: 'cameras',
+      id: "cameras-points",
+      type: "circle",
+      source: "cameras",
       paint: {
-        'circle-radius': 5,
-        'circle-color': '#1f2937',
-        'circle-stroke-color': '#ffffff',
-        'circle-stroke-width': 1
+        "circle-radius": 5,
+        "circle-color": "#1f2937",
+        "circle-stroke-width": 1.5,
+        "circle-stroke-color": "#fff"
       }
     });
 
-    // 6) Hover popup
-    const popup = new mapboxgl.Popup({ closeButton: false, closeOnClick: false, className: 'popup', offset: 12 });
-
-    map.on('mouseenter', 'cameras-points', (e) => {
-      map.getCanvas().style.cursor = 'pointer';
+    // 7) Popup
+    const popup = new mapboxgl.Popup({ closeButton: true, closeOnClick: true });
+    map.on("click", "cameras-points", (e) => {
       const f = e.features[0];
-      const p = f.properties || {};
-      const img = p.image_url || p['1_Make_a_photo_of_th'] || '';
-      const uuid = p.ec5_uuid || p.ec5_uuid_alias || '';
-      popup
-        .setLngLat(e.lngLat)
-        .setHTML(`
-          <div class="popup">
-            ${img ? `<img class="thumb" src="${img}" alt="camera ${uuid}" />` : '<em>No image</em>'}
-            ${uuid ? `<div style="margin-top:4px;"><strong>${uuid}</strong></div>` : ''}
-          </div>
-        `)
-        .addTo(map);
+      const coords = f.geometry.type === "Point" ? f.geometry.coordinates.slice() : e.lngLat.toArray();
+      popup.setLngLat(coords).setHTML(popupHTML(f.properties)).addTo(map);
     });
-    map.on('mousemove', 'cameras-points', (e) => popup.setLngLat(e.lngLat));
-    map.on('mouseleave', 'cameras-points', () => { map.getCanvas().style.cursor = ''; popup.remove(); });
+    map.on("mouseenter", "cameras-points", () => map.getCanvas().style.cursor = "pointer");
+    map.on("mouseleave", "cameras-points", () => map.getCanvas().style.cursor = "");
+  }
+
+  map.on("load", () => {
+    load().catch(err => {
+      console.error(err);
+      alert("Could not load cameras.geojson. Open the browser console for details.");
+    });
   });
 </script>
+</body>
+</html>
