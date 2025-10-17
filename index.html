@@ -47,17 +47,18 @@
       }
     ).addTo(map);
 
-    // Helper: pick an image URL from common property names
-    function pickImageUrl(props) {
-      const candidates = ["image_url", "image", "photo", "photo_url", "url_image", "img", "thumbnail"];
-      for (const key of candidates) {
-        if (props && props[key]) return String(props[key]).trim();
-        // try case-insensitive match
-        const found = Object.keys(props || {}).find(k => k.toLowerCase() === key);
-        if (found && props[found]) return String(props[found]).trim();
-      }
-      return null;
-    }
+   // Helper: build popup that shows ONLY the image from 'image_url'
+function buildImagePopup(props) {
+  const url = props && (props.image_url || props.Image_URL || props.Image_Url || props.IMAGE_URL);
+  if (url && /^https?:\/\//i.test(String(url))) {
+    const safe = String(url).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    return `<a href="${safe}" target="_blank" rel="noopener noreferrer">
+              <img class="popup-img" src="${safe}" alt="Camera photo" onerror="this.style.display='none'">
+            </a>`;
+  }
+  return '<div class="no-image">No image_url for this feature.</div>';
+}
+
 
     // Helper to escape strings for HTML
     function esc(s) {
