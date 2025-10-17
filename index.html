@@ -31,11 +31,10 @@
 
     // --- Initialize map ---
     const map = L.map('map', { zoomControl: true });
-
-    // Use your custom Mapbox style as raster tiles for Leaflet:
     const tiles = L.tileLayer(
-      "https://api.mapbox.com/styles/v1/tomvanarman/cmdlugpsh003401s93pou1z8m/tiles/512/{z}/{x}/{y}@2x?access_token={accessToken}",
+      "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
       {
+        id: "mapbox/streets-v11",
         accessToken: MAPBOX_TOKEN,
         tileSize: 512,
         zoomOffset: -1,
@@ -43,7 +42,8 @@
           '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors ' +
           '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a>'
       }
-    ).addTo(map);
+    );
+    tiles.addTo(map);
 
     // Helper to build a simple table of properties
     function buildPopupHTML(props) {
@@ -65,7 +65,7 @@
         const bounds = L.latLngBounds();
         const group = L.featureGroup().addTo(map);
 
-        (data.features || []).forEach((feat) => {
+        (data.features || []).forEach((feat, idx) => {
           if (!feat || !feat.geometry || feat.geometry.type !== "Point") return;
 
           const [lon, lat] = feat.geometry.coordinates;
