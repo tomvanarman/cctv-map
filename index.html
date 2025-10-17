@@ -24,7 +24,7 @@
 
   <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoidG9tdmFuYXJtYW4iLCJhIjoiRDlFeWFVdyJ9.B6ZgpP0CsDlAF1D1emvosg';
-    var STYLE_URL = 'mapbox://styles/tomvanarman/cmdlugpsh003401s93pou1z8m';
+    var STYLE_URL = 'https://api.mapbox.com/styles/v1/tomvanarman/cmdlugpsh003401s93pou1z8m?access_token=pk.eyJ1IjoidG9tdmFuYXJtYW4iLCJhIjoiRDlFeWFVdyJ9.B6ZgpP0CsDlAF1D1emvosg';
     var GEOJSON_URL = 'CCTV-Cameras.geojson';
 
     var map = new mapboxgl.Map({
@@ -38,12 +38,15 @@
     map.addControl(new mapboxgl.NavigationControl({ visualizePitch: true }), 'top-right');
     map.addControl(new mapboxgl.FullscreenControl(), 'top-right');
     map.addControl(new mapboxgl.ScaleControl({ maxWidth: 160, unit: 'metric' }));
+    
 
     // Load GeoJSON first so we have it ready when the map's style is loaded
     var dataPromise = fetch(GEOJSON_URL).then(function(r){
       if (!r.ok) throw new Error('Failed to load ' + GEOJSON_URL + ' (' + r.status + ')');
       return r.json();
     });
+    
+    map.on('error', function(e){ console.error('Mapbox error:', e && e.error); });
 
     map.on('load', function () {
       dataPromise.then(function(geojson){
