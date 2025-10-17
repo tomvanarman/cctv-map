@@ -3,14 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CCTV Cameras Map</title>
-<link rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-  crossorigin=""/>
+  <title>CCTV Cameras Map — Custom Mapbox Style</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
   <style>
     html, body { height: 100%; margin: 0; }
-    #map { height: 100%; width: 100%; }
+    #map { height: 100vh; width: 100%; }
     .popup-table { border-collapse: collapse; width: 260px; }
     .popup-table th, .popup-table td { border: 1px solid #ddd; padding: 4px 6px; font-size: 12px; }
     .popup-table th { background: #f8f8f8; text-align: left; }
@@ -19,10 +16,8 @@
 <body>
   <div id="map"></div>
 
-<script
-  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-  crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
     // --- Configuration ---
     const MAPBOX_TOKEN = "pk.eyJ1IjoidG9tdmFuYXJtYW4iLCJhIjoiRDlFeWFVdyJ9.B6ZgpP0CsDlAF1D1emvosg";
     const GEOJSON_URL = "CCTV-Cameras.geojson"; // keep this file in the same folder as index.html
@@ -37,7 +32,7 @@
     // --- Initialize map ---
     const map = L.map('map', { zoomControl: true });
 
-    // Use your custom Mapbox style as raster tiles for Leaflet:
+    // Use your custom Mapbox style (raster tiles)
     const tiles = L.tileLayer(
       "https://api.mapbox.com/styles/v1/tomvanarman/cmdlugpsh003401s93pou1z8m/tiles/512/{z}/{x}/{y}@2x?access_token={accessToken}",
       {
@@ -48,7 +43,8 @@
           '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors ' +
           '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a>'
       }
-    ).addTo(map);
+    );
+    tiles.addTo(map);
 
     // Helper to build a simple table of properties
     function buildPopupHTML(props) {
@@ -61,7 +57,7 @@
     }
 
     // --- Load GeoJSON and draw circles ---
-    fetch(GEOJSON_URL)
+    fetch(GEOJSON_URL, { cache: "no-store" })
       .then(r => {
         if (!r.ok) throw new Error("Failed to load " + GEOJSON_URL);
         return r.json();
@@ -89,7 +85,7 @@
         if (bounds.isValid()) {
           map.fitBounds(bounds.pad(0.15));
         } else {
-          map.setView([52.370216, 4.895168], 12); // fallback to Amsterdam
+          map.setView([52.36953, 4.87611], 12); // fallback to Amsterdam
         }
       })
       .catch(err => {
