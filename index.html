@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>CCTV Map</title>
 
@@ -31,8 +30,8 @@
     var map = new mapboxgl.Map({
       container: 'map',
       style: STYLE_URL,
-      center: [4.468638, 51.914569],
-      zoom: 15.37,
+      center: [4.468638, 51.914569], // fallback only
+      zoom: 15.37,                   // fallback only
       antialias: true
     });
 
@@ -40,16 +39,27 @@
     map.addControl(new mapboxgl.FullscreenControl(), 'top-right');
     map.addControl(new mapboxgl.ScaleControl({ maxWidth: 160, unit: 'metric' }));
 
-    fetch(GEOJSON_URL).then(function(r){
-      if (!r.ok) throw new Error('Failed to load ' + GEOJSON_URL);
+    // Load GeoJSON first so we have it ready when the map's style is loaded
+    var dataPromise = fetch(GEOJSON_URL).then(function(r){
+      if (!r.ok) throw new Error('Failed to load ' + GEOJSON_URL + ' (' + r.status + ')');
       return r.json();
-    }).then(function(geojson){
+    });
 
-      map.once('styledata', function(){
-        if (!map.getSource('cctv')) {
-          map.addSource('cctv', { type: 'geojson', data: geojson });
+    map.on('load', function () {
+      dataPromise.then(function(geojson){
+        // Guarantee a valid FeatureCollection
+        if (!geojson || geojson.type !== 'FeatureCollection') {
+          console.error('GeoJSON must be a FeatureCollection'); return;
         }
 
+        // Add source
+        if (!map.getSource('cctv')) {
+          map.addSource('cctv', { type: 'geojson', data: geojson });
+        } else {
+          map.getSource('cctv').setData(geojson);
+        }
+
+        // Add layer
         if (!map.getLayer('cctv-circles')) {
           map.addLayer({
             id: 'cctv-circles',
@@ -65,22 +75,24 @@
           });
         }
 
-        try {
-          var bounds = new mapboxgl.LngLatBounds();
-          (geojson.features || []).forEach(function(f){
-            if (f && f.geometry && f.geometry.type === 'Point') {
-              var c = f.geometry.coordinates;
-              if (Array.isArray(c) && c.length === 2) bounds.extend([c[0], c[1]]);
+        // Fit bounds once all current style work is idle (prevents “i is undefined” churn)
+        map.once('idle', function(){
+          try {
+            var bounds = new mapboxgl.LngLatBounds();
+            (geojson.features || []).forEach(function(f){
+              if (f && f.geometry && f.geometry.type === 'Point') {
+                var c = f.geometry.coordinates; if (Array.isArray(c) && c.length === 2) bounds.extend([c[0], c[1]]);
+              }
+            });
+            if (!bounds.isEmpty()) {
+              map.fitBounds(bounds, { padding: 40, maxZoom: 17 });
             }
-          });
-          if (!bounds.isEmpty()) {
-            map.fitBounds(bounds, { padding: 40, maxZoom: 17 });
-          }
-        } catch (e) { console.warn('Could not fit bounds:', e); }
+          } catch (e) { console.warn('fitBounds failed:', e); }
+        });
 
+        // Popups
         map.on('click', 'cctv-circles', function(e){
-          if (!e.features || !e.features[0]) return;
-          var f = e.features[0];
+          var f = e.features && e.features[0]; if (!f) return;
           var p = f.properties || {};
 
           var title = p.title ? String(p.title) : 'CCTV Camera';
@@ -101,13 +113,10 @@
           addRow('Purpose (guess)', p['6_What_do_you_think_']);
           addRow('Safety feeling', p['7_How_safe_does_this']);
 
-          var html = ''
-            + '<div class="popup">'
-            + imgHtml
-            + '<div class="meta">'
-            + '<div><strong>' + title + '</strong></div>'
-            + rows.join('')
-            + '</div></div>';
+          var html =
+            '<div class="popup">' + imgHtml +
+            '<div class="meta"><div><strong>' + title + '</strong></div>' +
+            rows.join('') + '</div></div>';
 
           new mapboxgl.Popup({ closeOnMove: true, offset: 12 })
             .setLngLat(e.lngLat)
@@ -117,11 +126,11 @@
 
         map.on('mouseenter', 'cctv-circles', function(){ map.getCanvas().style.cursor = 'pointer'; });
         map.on('mouseleave', 'cctv-circles', function(){ map.getCanvas().style.cursor = ''; });
-      });
 
-    }).catch(function(err){
-      console.error(err);
-      alert('Error loading map data. Open the browser console for details.');
+      }).catch(function(err){
+        console.error(err);
+        alert('Error loading GeoJSON. See console.');
+      });
     });
   </script>
 </body>
