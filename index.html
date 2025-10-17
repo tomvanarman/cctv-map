@@ -3,14 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CCTV Cameras Map</title>
+  <title>CCTV Cameras Map — Custom Mapbox Style</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
   <style>
     html, body { height: 100%; margin: 0; }
-    #map { height: 100%; width: 100%; }
-    .popup-table { border-collapse: collapse; width: 260px; }
-    .popup-table th, .popup-table td { border: 1px solid #ddd; padding: 4px 6px; font-size: 12px; }
-    .popup-table th { background: #f8f8f8; text-align: left; }
+    #map { height: 100vh; width: 100%; }
+    .popup-table { border-collapse: collapse; width: 280px; }
+    .popup-table th, .popup-table td { border: 1px solid #ddd; padding: 4px 6px; font-size: 12px; vertical-align: top; }
+    .popup-table th { background: #f8f8f8; text-align: left; white-space: nowrap; }
+    .popup-img { max-width: 280px; height: auto; display: block; border-radius: 8px; margin: 0 0 8px 0; }
+    .popup-caption { font-size: 11px; color: #555; margin-bottom: 6px; }
   </style>
 </head>
 <body>
@@ -31,10 +33,11 @@
 
     // --- Initialize map ---
     const map = L.map('map', { zoomControl: true });
+
+    // Use your custom Mapbox style (raster tiles)
     const tiles = L.tileLayer(
-      "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
+      "https://api.mapbox.com/styles/v1/tomvanarman/cmdlugpsh003401s93pou1z8m/tiles/512/{z}/{x}/{y}@2x?access_token={accessToken}",
       {
-        id: "mapbox/streets-v11",
         accessToken: MAPBOX_TOKEN,
         tileSize: 512,
         zoomOffset: -1,
@@ -42,21 +45,51 @@
           '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors ' +
           '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a>'
       }
-    );
-    tiles.addTo(map);
+    ).addTo(map);
 
-    // Helper to build a simple table of properties
+    // Helper: pick an image URL from common property names
+    function pickImageUrl(props) {
+      const candidates = ["image_url", "image", "photo", "photo_url", "url_image", "img", "thumbnail"];
+      for (const key of candidates) {
+        if (props && props[key]) return String(props[key]).trim();
+        // try case-insensitive match
+        const found = Object.keys(props || {}).find(k => k.toLowerCase() === key);
+        if (found && props[found]) return String(props[found]).trim();
+      }
+      return null;
+    }
+
+    // Helper to escape strings for HTML
+    function esc(s) {
+      return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+    }
+
+    // Helper to build a popup with optional image + properties table
     function buildPopupHTML(props) {
+      const imgUrl = pickImageUrl(props);
+      let imgHtml = "";
+      if (imgUrl && /^https?:\/\//i.test(imgUrl)) {
+        const safeUrl = esc(imgUrl);
+        imgHtml = \`
+          <a href="\${safeUrl}" target="_blank" rel="noopener noreferrer">
+            <img class="popup-img" src="\${safeUrl}" alt="Camera photo"
+                 onerror="this.style.display='none'">
+          </a>\`;
+      }
+
       const rows = Object.entries(props || {}).map(([k, v]) => {
-        const safeK = String(k).replace(/</g, "&lt;").replace(/>/g, "&gt;");
-        const safeV = (v === null || v === undefined) ? "" : String(v).replace(/</g, "&lt;").replace(/>/g, "&gt;");
-        return `<tr><th>${safeK}</th><td>${safeV}</td></tr>`;
+        const safeK = esc(k);
+        const safeV = (v === null || v === undefined) ? "" : esc(v);
+        return \`<tr><th>\${safeK}</th><td>\${safeV}</td></tr>\`;
       }).join("");
-      return `<table class="popup-table">${rows}</table>`;
+
+      return \`
+        \${imgHtml}
+        <table class="popup-table">\${rows}</table>\`;
     }
 
     // --- Load GeoJSON and draw circles ---
-    fetch(GEOJSON_URL)
+    fetch(GEOJSON_URL, { cache: "no-store" })
       .then(r => {
         if (!r.ok) throw new Error("Failed to load " + GEOJSON_URL);
         return r.json();
@@ -65,7 +98,7 @@
         const bounds = L.latLngBounds();
         const group = L.featureGroup().addTo(map);
 
-        (data.features || []).forEach((feat, idx) => {
+        (data.features || []).forEach((feat) => {
           if (!feat || !feat.geometry || feat.geometry.type !== "Point") return;
 
           const [lon, lat] = feat.geometry.coordinates;
@@ -76,7 +109,7 @@
             ...CIRCLE_STYLE
           });
 
-          circle.bindPopup(buildPopupHTML(feat.properties || {}));
+          circle.bindPopup(buildPopupHTML(feat.properties || {}), { maxWidth: 320, minWidth: 280 });
           circle.addTo(group);
           bounds.extend([lat, lon]);
         });
@@ -84,7 +117,7 @@
         if (bounds.isValid()) {
           map.fitBounds(bounds.pad(0.15));
         } else {
-          map.setView([52.370216, 4.895168], 12); // fallback to Amsterdam
+          map.setView([52.36953, 4.87611], 12);
         }
       })
       .catch(err => {
