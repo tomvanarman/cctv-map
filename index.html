@@ -14,18 +14,32 @@
   <style>
     html, body, #map { height: 100%; margin: 0; }
     .popup {
-      min-width: 260px;
-      max-width: 320px;
-      font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      min-width: 280px;
+      max-width: 360px;
+      font: 14px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
     .popup h3 {
-      margin: 0 0 .4rem 0; font-size: 1rem; font-weight: 600;
+      margin: 0 0 .5rem 0; font-size: 1rem; font-weight: 700;
+    }
+    .popup .kind {
+      margin: .2rem 0 .5rem 0; font-weight: 600; color: #111;
     }
     .popup img {
       display: block; width: 100%; height: auto; border-radius: 6px;
     }
-    .popup .meta { margin-top: .4rem; color: #666; font-size: .9rem; }
-    /* Optional: smaller, uniform, monochrome markers (instead of default pins) */
+    .field {
+      margin-top: .5rem;
+    }
+    .label {
+      font-size: .8rem; text-transform: uppercase; letter-spacing: .02em;
+      color: #666; margin-bottom: .2rem; display: block;
+    }
+    .value {
+      color: #111;
+      background: #f6f6f6; border: 1px solid #e6e6e6; border-radius: 6px;
+      padding: .5rem .6rem; white-space: pre-wrap; word-break: break-word;
+    }
+    /* Monochrome dot markers */
     .cam-marker {
       background: #111;
       border: 2px solid #fff;
@@ -45,35 +59,43 @@
   ></script>
 
   <script>
-    // 1) Create the map
-    const map = L.map('map', {
-      scrollWheelZoom: true
-    });
+    // Create the map
+    const map = L.map('map', { scrollWheelZoom: true });
 
-    // 2) Add a monochrome OpenStreetMap (Carto Positron) baselayer
-    //    This is a grayscale/monochrome OSM-derived style.
-    const positron = L.tileLayer(
-      'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-      {
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors ' +
-          '&copy; <a href="https://carto.com/">CARTO</a>',
-        maxZoom: 20
-      }
-    ).addTo(map);
+    // Monochrome OSM (Carto Positron)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors ' +
+        '&copy; <a href="https://carto.com/">CARTO</a>',
+      maxZoom: 20
+    }).addTo(map);
 
-    // 3) Helper: make a simple monochrome dot marker
+    // Small monochrome dot marker
     function dotMarker(latlng) {
-      // Leaflet's DivIcon lets us style a tiny circular marker
       return L.marker(latlng, {
-        icon: L.divIcon({
-          className: 'cam-marker',
-          iconSize: [12, 12]
-        })
+        icon: L.divIcon({ className: 'cam-marker', iconSize: [12, 12] })
       });
     }
 
-    // 4) Load your GeoJSON and add to map
+    // Safely get the first present property among several candidates
+    function getFirstProp(obj, keys) {
+      for (const k of keys) {
+        if (obj && Object.prototype.hasOwnProperty.call(obj, k) && obj[k] != null && obj[k] !== '') {
+          return obj[k];
+        }
+      }
+      return undefined;
+    }
+
+    // Escape HTML in any string
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // Load your GeoJSON
     fetch('CCTV-Cameras.geojson')
       .then(r => r.json())
       .then(geojson => {
@@ -81,32 +103,65 @@
           pointToLayer: (feature, latlng) => dotMarker(latlng),
           onEachFeature: (feature, marker) => {
             const p = feature.properties || {};
-            const title = p.title || 'Camera';
-            const img = p.image_url; // <- field containing the thumbnail URL
-            const kind = p['3_What_kind_of_camer']; // optional extra detail
 
-            // Build popup HTML (only show image if we have a URL)
+            // Title (fallback to "Camera")
+            const title = getFirstProp(p, ['title', 'name']) || 'Camera';
+
+            // --- ABOVE the image: "What kind of camera do you think this is?" ---
+            // Try multiple possible keys in case the exact label differs.
+            const cameraKind = getFirstProp(p, [
+              'What kind of camera do you think this is?',
+              'what kind of camera do you think this is?',
+              'What_kind_of_camera_do_you_think_this_is?',
+              '3_What_kind_of_camer',   // seen variant
+              'camera_kind',
+              'type',
+              'Type'
+            ]);
+
+            // Image URL
+            const img = getFirstProp(p, ['image_url', 'thumbnail', 'image', 'photo']);
+
+            // --- BELOW the image: Question / Answer fields ---
+            const question = getFirstProp(p, ['Question', 'question', 'Prompt', 'prompt']);
+            const answer   = getFirstProp(p, ['Answer', 'answer', 'Response', 'response']);
+
+            // Build popup HTML
             let html = `<div class="popup">`;
             html += `<h3>${escapeHtml(title)}</h3>`;
+
+            if (cameraKind) {
+              html += `<div class="kind">${escapeHtml(cameraKind)}</div>`;
+            }
+
             if (img) {
               html += `<img src="${encodeURI(img)}" alt="Camera thumbnail" loading="lazy">`;
             } else {
-              html += `<div class="meta">No image available</div>`;
+              html += `<div class="value" style="margin:.4rem 0;">No image available</div>`;
             }
-            if (kind) {
-              html += `<div class="meta">${escapeHtml(kind)}</div>`;
-            }
+
+            // Question
+            html += `<div class="field">` +
+                      `<span class="label">Question</span>` +
+                      `<div class="value">${escapeHtml(question ?? '—')}</div>` +
+                    `</div>`;
+
+            // Answer
+            html += `<div class="field">` +
+                      `<span class="label">Answer</span>` +
+                      `<div class="value">${escapeHtml(answer ?? '—')}</div>` +
+                    `</div>`;
+
             html += `</div>`;
 
-            marker.bindPopup(html, { maxWidth: 340 });
+            marker.bindPopup(html, { maxWidth: 380 });
           }
         }).addTo(map);
 
-        // 5) Fit the map to your data
+        // Fit map to data
         try {
           map.fitBounds(layer.getBounds(), { padding: [20, 20] });
-        } catch (e) {
-          // Fallback: if bounds fail (e.g., empty), center somewhere sensible
+        } catch {
           map.setView([51.92, 4.48], 12);
         }
       })
@@ -114,16 +169,6 @@
         console.error('Failed to load GeoJSON:', err);
         alert('Could not load CCTV-Cameras.geojson. Is your local server running?');
       });
-
-    // Small helper to avoid HTML injection in titles/fields
-    function escapeHtml(str) {
-      return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
-    }
   </script>
 </body>
 </html>
