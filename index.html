@@ -16,29 +16,18 @@
     .popup {
       min-width: 280px;
       max-width: 360px;
-      font: 14px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font: 14px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
     .popup h3 {
       margin: 0 0 .5rem 0; font-size: 1rem; font-weight: 700;
     }
-    .popup .kind {
-      margin: .2rem 0 .5rem 0; font-weight: 600; color: #111;
-    }
     .popup img {
       display: block; width: 100%; height: auto; border-radius: 6px;
     }
-    .field {
-      margin-top: .5rem;
-    }
-    .label {
-      font-size: .8rem; text-transform: uppercase; letter-spacing: .02em;
-      color: #666; margin-bottom: .2rem; display: block;
-    }
-    .value {
-      color: #111;
-      background: #f6f6f6; border: 1px solid #e6e6e6; border-radius: 6px;
-      padding: .5rem .6rem; white-space: pre-wrap; word-break: break-word;
-    }
+    .popup .meta { margin-top: .35rem; color: #666; font-size: .9rem; }
+    .qa { margin-top: .5rem; }
+    .qa .q { font-weight: 600; margin-bottom: .15rem; }
+    .qa .a { white-space: pre-wrap; }
     /* Monochrome dot markers */
     .cam-marker {
       background: #111;
@@ -62,112 +51,98 @@
     // Create the map
     const map = L.map('map', { scrollWheelZoom: true });
 
-    // Monochrome OSM (Carto Positron)
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors ' +
-        '&copy; <a href="https://carto.com/">CARTO</a>',
-      maxZoom: 20
-    }).addTo(map);
+    // Monochrome OSM/Carto Positron basemap
+    L.tileLayer(
+      'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+      {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors ' +
+          '&copy; <a href="https://carto.com/">CARTO</a>',
+        maxZoom: 20
+      }
+    ).addTo(map);
 
-    // Small monochrome dot marker
+    // Tiny monochrome dot marker
     function dotMarker(latlng) {
       return L.marker(latlng, {
-        icon: L.divIcon({ className: 'cam-marker', iconSize: [12, 12] })
+        icon: L.divIcon({
+          className: 'cam-marker',
+          iconSize: [12, 12]
+        })
       });
     }
 
-    // Safely get the first present property among several candidates
-    function getFirstProp(obj, keys) {
-      for (const k of keys) {
-        if (obj && Object.prototype.hasOwnProperty.call(obj, k) && obj[k] != null && obj[k] !== '') {
-          return obj[k];
-        }
-      }
-      return undefined;
-    }
+    // Friendly labels for the fields you want to display
+    const FIELD_LABELS = [
+      { key: '4_Do_you_see_a_sign_', label: 'Do you see a sign?' },
+      { key: '5_Who_do_you_think_i', label: 'Who do you think is responsible?' },
+      { key: '6_What_do_you_think_', label: 'What do you think it records?' },
+      { key: '7_How_safe_does_this', label: 'How safe does this make you feel?' },
+      { key: '8_What_question_do_y', label: 'What question do you have?' }
+    ];
 
-    // Escape HTML in any string
+    // Escape helper to avoid injection
     function escapeHtml(str) {
       return String(str)
-        .replace(/&/g, '&amp;').replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
         .replace(/'/g, '&#039;');
     }
 
-    // Load your GeoJSON
+    // Build popup HTML for a feature
+    function buildPopup(feature) {
+      const p = feature.properties || {};
+      const kind = p['3_What_kind_of_camer'] || 'Camera';
+      const img = p.image_url;
+
+      let html = `<div class="popup">`;
+      html += `<h3>${escapeHtml(kind)}</h3>`;
+
+      if (img) {
+        html += `<img src="${encodeURI(img)}" alt="Camera thumbnail" loading="lazy">`;
+      } else {
+        html += `<div class="meta">No image available</div>`;
+      }
+
+      // Add the requested fields as Q&A blocks (only if the value exists)
+      FIELD_LABELS.forEach(({ key, label }) => {
+        const val = p[key];
+        if (val !== undefined && val !== null && String(val).trim() !== '') {
+          html += `
+            <div class="qa">
+              <div class="q">${escapeHtml(label)}</div>
+              <div class="a">${escapeHtml(String(val))}</div>
+            </div>`;
+        }
+      });
+
+      html += `</div>`;
+      return html;
+    }
+
+    // Load GeoJSON and add to map
     fetch('CCTV-Cameras.geojson')
       .then(r => r.json())
       .then(geojson => {
         const layer = L.geoJSON(geojson, {
           pointToLayer: (feature, latlng) => dotMarker(latlng),
           onEachFeature: (feature, marker) => {
-            const p = feature.properties || {};
-
-            // Title (fallback to "Camera")
-            const title = getFirstProp(p, ['title', 'name']) || 'Camera';
-
-            // --- ABOVE the image: "What kind of camera do you think this is?" ---
-            // Try multiple possible keys in case the exact label differs.
-            const cameraKind = getFirstProp(p, [
-              'What kind of camera do you think this is?',
-              'what kind of camera do you think this is?',
-              'What_kind_of_camera_do_you_think_this_is?',
-              '3_What_kind_of_camer',   // seen variant
-              'camera_kind',
-              'type',
-              'Type'
-            ]);
-
-            // Image URL
-            const img = getFirstProp(p, ['image_url', 'thumbnail', 'image', 'photo']);
-
-            // --- BELOW the image: Question / Answer fields ---
-            const question = getFirstProp(p, ['Question', 'question', 'Prompt', 'prompt']);
-            const answer   = getFirstProp(p, ['Answer', 'answer', 'Response', 'response']);
-
-            // Build popup HTML
-            let html = `<div class="popup">`;
-            html += `<h3>${escapeHtml(title)}</h3>`;
-
-            if (cameraKind) {
-              html += `<div class="kind">${escapeHtml(cameraKind)}</div>`;
-            }
-
-            if (img) {
-              html += `<img src="${encodeURI(img)}" alt="Camera thumbnail" loading="lazy">`;
-            } else {
-              html += `<div class="value" style="margin:.4rem 0;">No image available</div>`;
-            }
-
-            // Question
-            html += `<div class="field">` +
-                      `<span class="label">Question</span>` +
-                      `<div class="value">${escapeHtml(question ?? '—')}</div>` +
-                    `</div>`;
-
-            // Answer
-            html += `<div class="field">` +
-                      `<span class="label">Answer</span>` +
-                      `<div class="value">${escapeHtml(answer ?? '—')}</div>` +
-                    `</div>`;
-
-            html += `</div>`;
-
-            marker.bindPopup(html, { maxWidth: 380 });
+            marker.bindPopup(buildPopup(feature), { maxWidth: 380 });
           }
         }).addTo(map);
 
         // Fit map to data
         try {
           map.fitBounds(layer.getBounds(), { padding: [20, 20] });
-        } catch {
-          map.setView([51.92, 4.48], 12);
+        } catch (e) {
+          map.setView([51.92, 4.48], 12); // fallback
         }
       })
       .catch(err => {
         console.error('Failed to load GeoJSON:', err);
-        alert('Could not load CCTV-Cameras.geojson. Is your local server running?');
+        alert('Could not load CCTV-Cameras.geojson. Is your local server running in this folder?');
       });
   </script>
 </body>
