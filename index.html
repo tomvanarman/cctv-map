@@ -14,14 +14,21 @@
 />
 
 <style>
-  html, body, #map {
+  html, body {
     height: 100%;
     margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #fff;
+  }
+  #map {
+    width: 100%;
+    height: 100%;
   }
 
   .popup-content {
     max-width: 260px;
-    font: 14px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.4;
+    font-size: 14px;
   }
 
   .popup-content img {
@@ -30,15 +37,13 @@
     border-radius: 8px;
     display: block;
     margin-bottom: 8px;
+    object-fit: cover;
   }
 
   .popup-meta {
     background: #f5f5f5;
     border-radius: 6px;
-    padding: 8px;
-  }
-
-  .popup-meta div {
+    padding: 6px 8px;
     margin-bottom: 4px;
     word-break: break-word;
   }
@@ -47,12 +52,13 @@
     position: absolute;
     top: 12px;
     left: 12px;
-    z-index: 1000;
     background: rgba(255,255,255,0.95);
     border-radius: 10px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
     padding: 10px 12px;
-    font: 13px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    font-size: 13px;
+    line-height: 1.4;
+    z-index: 1000;
   }
 
   .legend-row {
@@ -60,117 +66,129 @@
     align-items: center;
     margin-bottom: 6px;
   }
-  .legend-dot {
+  .legend-row:last-child {
+    margin-bottom: 0;
+  }
+  .legend-swatch-point {
     width: 12px;
     height: 12px;
-    border-radius: 50%;
     background: #1d4ed8;
+    border-radius: 50%;
     border: 2px solid white;
-    box-shadow: 0 0 3px rgba(0,0,0,0.4);
+    box-shadow: 0 0 0 1px #1d4ed8;
     margin-right: 6px;
   }
-  .legend-circle {
+  .legend-swatch-radius {
     width: 12px;
     height: 12px;
+    background: rgba(29,78,216,0.15);
     border-radius: 50%;
-    border: 2px solid rgba(29,78,216,0.4);
+    border: 1px solid #1d4ed8;
     margin-right: 6px;
   }
-
 </style>
 </head>
-<body>
 
+<body>
 <div id="map"></div>
 
 <div class="legend">
   <div class="legend-row">
-    <div class="legend-dot"></div>
+    <div class="legend-swatch-point"></div>
     <div>Camera location</div>
   </div>
   <div class="legend-row">
-    <div class="legend-circle"></div>
-    <div>~50m area</div>
+    <div class="legend-swatch-radius"></div>
+    <div>50 m radius</div>
   </div>
 </div>
 
 <!-- Leaflet JS -->
 <script
   src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9XMBeXV8qGGbY6H94C4="
-  crossorigin=""
-></script>
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+  crossorigin="">
+</script>
 
 <script>
-  // Initial map view (fallback before data loads)
-  var map = L.map('map').setView([52.3729, 4.9173], 17);
+// Path to your new GeoJSON file
+var GEOJSON_URL = 'cameras-new.geojson';
 
-  // Basemap: you can swap this to any tile service you prefer.
-  // Using Carto light basemap (no API key needed).
-  L.tileLayer(
-    'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-    {
-      maxZoom: 20,
-      attribution:
-        '&copy; OpenStreetMap contributors &copy; CARTO'
-    }
-  ).addTo(map);
+// 1. init map
+var map = L.map('map', {
+  zoomControl: true
+});
 
-  // Helper to build popup HTML for each feature
-  function buildPopupHTML(props) {
-    var title = props.title || 'Camera';
-    var camType = props.camera_type || '';
-    var indoor = props.indoors_outdoors || '';
-    var signage = props.camera_sign || '';
-    var accuracy = (props.accuracy_m !== undefined && props.accuracy_m !== null)
-        ? props.accuracy_m + ' m'
-        : '';
-    var img = props.image_url
-        ? '<img src="' + props.image_url + '" alt="camera photo" loading="lazy" />'
-        : '';
+// Add OSM baselayer
+var osm = L.tileLayer(
+  'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+  {
+    maxZoom: 20,
+    attribution: '&copy; OpenStreetMap contributors'
+  }
+).addTo(map);
 
-    var metaRows = '';
-    if (camType)   metaRows += '<div><strong>Type:</strong> ' + camType + '</div>';
-    if (indoor)    metaRows += '<div><strong>Indoors/Outdoors:</strong> ' + indoor + '</div>';
-    if (signage)   metaRows += '<div><strong>Camera signage visible?</strong> ' + signage + '</div>';
-    if (accuracy)  metaRows += '<div><strong>GPS accuracy:</strong> ' + accuracy + '</div>';
-    if (props.created_at)  metaRows += '<div><strong>Spotted at:</strong> ' + props.created_at + '</div>';
+// We'll collect bounds as we add features
+var featureBounds = [];
 
-    var html =
-      '<div class="popup-content">' +
-        img +
-        '<div class="popup-meta">' +
-          '<div><strong>' + title + '</strong></div>' +
-          metaRows +
-        '</div>' +
-      '</div>';
+function makePopupHTML(props) {
+  var html = '<div class="popup-content">';
 
-    return html;
+  // image
+  if (props.image_url) {
+    html += '<img src="' + props.image_url + '" alt="Camera photo" />';
   }
 
-  // Load the GeoJSON you saved
-  fetch('camera-spotting-tour.geojson')
-    .then(function(res){
-      if(!res.ok) { throw new Error('Could not load camera-spotting-tour.geojson'); }
-      return res.json();
-    })
-    .then(function(geojson){
-      var bounds = [];
+  // title
+  if (props.title) {
+    html += '<div class="popup-meta"><strong>' + props.title + '</strong></div>';
+  }
 
-      // We'll create a LayerGroup so we can add marker + circle per feature
-      var group = L.layerGroup();
+  // camera type
+  if (props.camera_type) {
+    html += '<div class="popup-meta"><strong>Type:</strong> ' + props.camera_type + '</div>';
+  }
 
-      (geojson.features || []).forEach(function(feat){
-        if (!feat.geometry || feat.geometry.type !== 'Point') return;
-        var coords = feat.geometry.coordinates;
-        if (!Array.isArray(coords) || coords.length < 2) return;
+  // indoor/outdoor
+  if (props.indoor_outdoor) {
+    html += '<div class="popup-meta"><strong>Indoors / Outdoors:</strong> ' + props.indoor_outdoor + '</div>';
+  }
 
-        var lng = coords[0];
-        var lat = coords[1];
-        var props = feat.properties || {};
+  // signage
+  if (props.signage_visible) {
+    html += '<div class="popup-meta"><strong>Signage visible?:</strong> ' + props.signage_visible + '</div>';
+  }
 
-        // Marker
-        var marker = L.circleMarker([lat, lng], {
+  // accuracy
+  if (props.accuracy_m !== undefined && props.accuracy_m !== null) {
+    html += '<div class="popup-meta"><strong>GPS accuracy (m):</strong> ' + props.accuracy_m + '</div>';
+  }
+
+  // timestamps
+  if (props.created_at) {
+    html += '<div class="popup-meta"><strong>Recorded:</strong> ' + props.created_at + '</div>';
+  }
+  if (props.uploaded_at) {
+    html += '<div class="popup-meta"><strong>Uploaded:</strong> ' + props.uploaded_at + '</div>';
+  }
+
+  html += '</div>';
+  return html;
+}
+
+// 2. load the geojson
+fetch(GEOJSON_URL)
+  .then(function(resp){
+    if (!resp.ok) throw new Error('Failed to load ' + GEOJSON_URL + ' (' + resp.status + ')');
+    return resp.json();
+  })
+  .then(function(geojson){
+
+    // create layer for markers
+    var markerLayer = L.geoJSON(geojson, {
+      pointToLayer: function (feature, latlng) {
+        // visible point marker
+        var marker = L.circleMarker(latlng, {
           radius: 6,
           color: '#ffffff',
           weight: 2,
@@ -178,6 +196,43 @@
           fillOpacity: 0.8
         });
 
-        // Popup on marker
-        marker.bindPopup(buildPopupHTML(props), {
-          maxWidth:
+        // popup content
+        var props = feature.properties || {};
+        marker.bindPopup(makePopupHTML(props));
+
+        // also draw 50m radius circle
+        var circle = L.circle(latlng, {
+          radius: 50, // meters
+          color: '#1d4ed8',
+          weight: 1,
+          fillColor: '#1d4ed8',
+          fillOpacity: 0.15
+        });
+
+        circle.addTo(map);
+
+        // track for bounds
+        featureBounds.push(latlng);
+
+        return marker;
+      }
+    }).addTo(map);
+
+    // fit map to all features/circles
+    if (featureBounds.length > 0) {
+      var bounds = L.latLngBounds(featureBounds);
+      map.fitBounds(bounds.pad(0.2)); // little padding
+    } else {
+      // fallback center (Amsterdam-ish)
+      map.setView([52.3725, 4.9175], 17);
+    }
+
+  })
+  .catch(function(err){
+    console.error(err);
+    alert('Could not load cameras-new.geojson. See console for details.');
+  });
+</script>
+
+</body>
+</html>
