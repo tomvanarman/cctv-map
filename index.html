@@ -110,7 +110,7 @@
   </div>
   <div class="legend-row">
     <div class="legend-swatch-radius"></div>
-    <div>50 m radius</div>
+    <div>10 m radius</div>
   </div>
 </div>
 
@@ -180,7 +180,7 @@
     })
     .then(function(geojson){
 
-      // Add each feature as a circleMarker + 50m radius circle
+      // Add each feature as a circleMarker + 10m radius circle
       var layer = L.geoJSON(geojson, {
         pointToLayer: function (feature, latlng) {
           var props = feature.properties || {};
@@ -199,7 +199,7 @@
 
           // 50m radius circle
           var circle = L.circle(latlng, {
-            radius: 50,
+            radius: 10,
             color: '#1d4ed8',
             weight: 1,
             fillColor: '#1d4ed8',
