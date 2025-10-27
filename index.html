@@ -130,10 +130,9 @@
     zoomControl: true
   });
 
-  // 2. Monochrome-ish basemap (Carto light_all, OSM data)
-  //    This is a widely used neutral/grey tile set.
+  // 2. Light grey basemap (Carto light_all on OSM data)
   L.tileLayer(
-    'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',
+    'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
     {
       maxZoom: 20,
       attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
@@ -189,16 +188,16 @@
           // main visible marker
           var marker = L.circleMarker(latlng, {
             radius: 6,
-            color: '#ffffff',        // stroke color
+            color: '#ffffff',
             weight: 2,
-            fillColor: '#1d4ed8',    // fill color
+            fillColor: '#1d4ed8',
             fillOpacity: 0.8
           });
 
           // attach popup
           marker.bindPopup(buildPopupHTML(props));
 
-          // buffer circle ~50m
+          // 50m radius circle
           var circle = L.circle(latlng, {
             radius: 50,
             color: '#1d4ed8',
@@ -206,7 +205,6 @@
             fillColor: '#1d4ed8',
             fillOpacity: 0.15
           });
-
           circle.addTo(map);
 
           // collect for fitBounds
@@ -232,6 +230,7 @@
 
 })();
 </script>
+
 
 </body>
 </html>
