@@ -1,233 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Camera Spotting Tour Map</title>
-
-<!-- Leaflet CSS -->
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-  crossorigin=""
-/>
-
-<style>
-  html, body {
-    height: 100%;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: #fff;
-  }
-
-  #map {
-    width: 100%;
-    height: 100%;
-  }
-
-  .legend {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    background: rgba(255,255,255,0.95);
-    border-radius: 10px;
-    padding: 10px 12px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-    font-size: 13px;
-    line-height: 1.4;
-    z-index: 1000;
-  }
-
-  .legend-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 6px;
-  }
-  .legend-row:last-child {
-    margin-bottom: 0;
-  }
-  .legend-swatch-point {
-    width: 12px;
-    height: 12px;
-    background: #1d4ed8;
-    border-radius: 50%;
-    border: 2px solid white;
-    box-shadow: 0 0 0 1px #1d4ed8;
-    margin-right: 6px;
-  }
-  .legend-swatch-radius {
-    width: 12px;
-    height: 12px;
-    background: rgba(29,78,216,0.15);
-    border-radius: 50%;
-    border: 1px solid #1d4ed8;
-    margin-right: 6px;
-  }
-
-  .popup-wrapper {
-    max-width: 240px;
-    line-height: 1.4;
-    font-size: 14px;
-  }
-
-  .popup-title {
-    font-weight: 600;
-    font-size: 15px;
-    margin-bottom: 6px;
-  }
-
-  .popup-thumb {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    display: block;
-    margin-bottom: 8px;
-    object-fit: cover;
-  }
-
-  .popup-line {
-    background: #f5f5f5;
-    border-radius: 6px;
-    padding: 6px 8px;
-    margin-bottom: 4px;
-    word-break: break-word;
-  }
-
-</style>
-</head>
-
-<body>
-<div id="map"></div>
-
-<div class="legend">
-  <div class="legend-row">
-    <div class="legend-swatch-point"></div>
-    <div>Camera location</div>
-  </div>
-  <div class="legend-row">
-    <div class="legend-swatch-radius"></div>
-    <div>50 m radius</div>
-  </div>
-</div>
-
-<!-- Leaflet JS -->
-<script
-  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-  crossorigin="">
-</script>
-
-<script>
-(function(){
-  // path to your new geojson
-  var GEOJSON_URL = 'cameras-new.geojson';
-
-  // init map (we'll fit to data later)
-  var map = L.map('map', {
-    zoomControl: true
-  });
-
-  // basemap
-  L.tileLayer(
-    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+{
+  "type": "FeatureCollection",
+  "features": [
     {
-      maxZoom: 20,
-      attribution: '&copy; OpenStreetMap contributors'
-    }
-  ).addTo(map);
-
-  // we'll collect all latlngs to fit bounds
-  var allLatLngs = [];
-
-  function popupHTML(props){
-    var cameraType = props.camera_type || 'Camera';
-    var img = props.image_url || '';
-    var io = props.indoor_outdoor || '';
-    var sign = props.signage_visible || '';
-
-    var html = '<div class="popup-wrapper">';
-
-    // Title from camera_type
-    html += '<div class="popup-title">' + cameraType + '</div>';
-
-    // Thumbnail
-    if (img) {
-      html += '<img class="popup-thumb" src="' + img + '" alt="Camera image" />';
-    }
-
-    // indoor_outdoor
-    if (io) {
-      html += '<div class="popup-line"><strong>Indoors / Outdoors:</strong> ' + io + '</div>';
-    }
-
-    // signage_visible
-    if (sign) {
-      html += '<div class="popup-line"><strong>Signage visible?:</strong> ' + sign + '</div>';
-    }
-
-    html += '</div>';
-    return html;
-  }
-
-  // load geojson
-  fetch(GEOJSON_URL)
-    .then(function(r){
-      if (!r.ok) throw new Error('Failed to load ' + GEOJSON_URL + ' (' + r.status + ')');
-      return r.json();
-    })
-    .then(function(geojson){
-      // make a layer for the points
-      var pointLayer = L.geoJSON(geojson, {
-        pointToLayer: function(feature, latlng){
-          var props = feature.properties || {};
-
-          // visible marker
-          var marker = L.circleMarker(latlng, {
-            radius: 6,
-            color: '#ffffff',
-            weight: 2,
-            fillColor: '#1d4ed8',
-            fillOpacity: 0.8
-          });
-
-          // popup
-          marker.bindPopup(popupHTML(props));
-
-          // 50m circle
-          var circle = L.circle(latlng, {
-            radius: 50,
-            color: '#1d4ed8',
-            weight: 1,
-            fillColor: '#1d4ed8',
-            fillOpacity: 0.15
-          });
-          circle.addTo(map);
-
-          // collect for fitBounds
-          allLatLngs.push(latlng);
-
-          return marker;
-        }
-      }).addTo(map);
-
-      // fit to all points (or fallback view)
-      if (allLatLngs.length > 0) {
-        var bounds = L.latLngBounds(allLatLngs);
-        map.fitBounds(bounds.pad(0.2));
-      } else {
-        // fallback to Amsterdam-ish
-        map.setView([52.3725, 4.9175], 17);
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.917539, 52.372408]
+      },
+      "properties": {
+        "camera_type": "Doorbell Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=f4658b09-f4bb-434d-bcab-5dd5b3b557f3_1761219622.jpg",
+        "indoor_outdoor": "Indoors",
+        "signage_visible": "No",
+        "accuracy_m": 9,
+        "created_at": "2025-10-23T11:40:34.000Z",
+        "uploaded_at": "2025-10-27T20:42:10.000Z",
+        "ec5_uuid": "f4658b09-f4bb-434d-bcab-5dd5b3b557f3"
       }
-
-    })
-    .catch(function(err){
-      console.error(err);
-      alert('Could not load cameras-new.geojson. See console for details.');
-    });
-
-})();
-</script>
-
-</body>
-</html>
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.916705, 52.373172]
+      },
+      "properties": {
+        "camera_type": "Bullet Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=b8094c27-9b99-4527-aba3-a82c291f1068_1761061455.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No",
+        "accuracy_m": 3,
+        "created_at": "2025-10-21T15:44:28.000Z",
+        "uploaded_at": "2025-10-21T15:44:36.000Z",
+        "ec5_uuid": "b8094c27-9b99-4527-aba3-a82c291f1068"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.916802, 52.373153]
+      },
+      "properties": {
+        "camera_type": "Bullet Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=6a74cf79-2d90-432c-aa12-8b56874cce8b_1761061399.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No",
+        "accuracy_m": 6,
+        "created_at": "2025-10-21T15:43:30.000Z",
+        "uploaded_at": "2025-10-21T15:44:34.000Z",
+        "ec5_uuid": "6a74cf79-2d90-432c-aa12-8b56874cce8b"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.91728, 52.372919]
+      },
+      "properties": {
+        "camera_type": "Bullet Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=b4f604f3-f90a-4f4e-9dfa-d2c7f4fd8d25_1761061301.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes",
+        "accuracy_m": 9,
+        "created_at": "2025-10-21T15:42:22.000Z",
+        "uploaded_at": "2025-10-21T15:44:32.000Z",
+        "ec5_uuid": "b4f604f3-f90a-4f4e-9dfa-d2c7f4fd8d25"
+      }
+    }
+  ]
+}
