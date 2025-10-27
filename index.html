@@ -1,149 +1,183 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>CCTV Cameras Map</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Leaflet CSS -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""
-  />
-  <style>
-    html, body, #map { height: 100%; margin: 0; }
-    .popup {
-      min-width: 280px;
-      max-width: 360px;
-      font: 14px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
-    .popup h3 {
-      margin: 0 0 .5rem 0; font-size: 1rem; font-weight: 700;
-    }
-    .popup img {
-      display: block; width: 100%; height: auto; border-radius: 6px;
-    }
-    .popup .meta { margin-top: .35rem; color: #666; font-size: .9rem; }
-    .qa { margin-top: .5rem; }
-    .qa .q { font-weight: 600; margin-bottom: .15rem; }
-    .qa .a { white-space: pre-wrap; }
-    /* Monochrome dot markers */
-    .cam-marker {
-      background: #111;
-      border: 2px solid #fff;
-      width: 12px; height: 12px; border-radius: 50%;
-      box-shadow: 0 0 0 2px rgba(0,0,0,.15);
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Camera Spotting Tour Map</title>
+
+<!-- Leaflet CSS -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""
+/>
+
+<style>
+  html, body, #map {
+    height: 100%;
+    margin: 0;
+  }
+
+  .popup-content {
+    max-width: 260px;
+    font: 14px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  .popup-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .popup-meta {
+    background: #f5f5f5;
+    border-radius: 6px;
+    padding: 8px;
+  }
+
+  .popup-meta div {
+    margin-bottom: 4px;
+    word-break: break-word;
+  }
+
+  .legend {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 1000;
+    background: rgba(255,255,255,0.95);
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    padding: 10px 12px;
+    font: 13px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  .legend-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #1d4ed8;
+    border: 2px solid white;
+    box-shadow: 0 0 3px rgba(0,0,0,0.4);
+    margin-right: 6px;
+  }
+  .legend-circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid rgba(29,78,216,0.4);
+    margin-right: 6px;
+  }
+
+</style>
 </head>
 <body>
-  <div id="map"></div>
 
-  <!-- Leaflet JS -->
-  <script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""
-  ></script>
+<div id="map"></div>
 
-  <script>
-    // Create the map
-    const map = L.map('map', { scrollWheelZoom: true });
+<div class="legend">
+  <div class="legend-row">
+    <div class="legend-dot"></div>
+    <div>Camera location</div>
+  </div>
+  <div class="legend-row">
+    <div class="legend-circle"></div>
+    <div>~50m area</div>
+  </div>
+</div>
 
-    // Monochrome OSM/Carto Positron basemap
-    L.tileLayer(
-      'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-      {
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors ' +
-          '&copy; <a href="https://carto.com/">CARTO</a>',
-        maxZoom: 20
-      }
-    ).addTo(map);
+<!-- Leaflet JS -->
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9XMBeXV8qGGbY6H94C4="
+  crossorigin=""
+></script>
 
-    // Tiny monochrome dot marker
-    function dotMarker(latlng) {
-      return L.marker(latlng, {
-        icon: L.divIcon({
-          className: 'cam-marker',
-          iconSize: [12, 12]
-        })
-      });
+<script>
+  // Initial map view (fallback before data loads)
+  var map = L.map('map').setView([52.3729, 4.9173], 17);
+
+  // Basemap: you can swap this to any tile service you prefer.
+  // Using Carto light basemap (no API key needed).
+  L.tileLayer(
+    'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+    {
+      maxZoom: 20,
+      attribution:
+        '&copy; OpenStreetMap contributors &copy; CARTO'
     }
+  ).addTo(map);
 
-    // Friendly labels for the fields you want to display
-    const FIELD_LABELS = [
-      { key: '4_Do_you_see_a_sign_', label: 'Do you see a sign?' },
-      { key: '5_Who_do_you_think_i', label: 'Who do you think is responsible?' },
-      { key: '6_What_do_you_think_', label: 'What do you think it records?' },
-      { key: '7_How_safe_does_this', label: 'How safe does this make you feel?' },
-      { key: '8_What_question_do_y', label: 'What question do you have?' }
-    ];
+  // Helper to build popup HTML for each feature
+  function buildPopupHTML(props) {
+    var title = props.title || 'Camera';
+    var camType = props.camera_type || '';
+    var indoor = props.indoors_outdoors || '';
+    var signage = props.camera_sign || '';
+    var accuracy = (props.accuracy_m !== undefined && props.accuracy_m !== null)
+        ? props.accuracy_m + ' m'
+        : '';
+    var img = props.image_url
+        ? '<img src="' + props.image_url + '" alt="camera photo" loading="lazy" />'
+        : '';
 
-    // Escape helper to avoid injection
-    function escapeHtml(str) {
-      return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
-    }
+    var metaRows = '';
+    if (camType)   metaRows += '<div><strong>Type:</strong> ' + camType + '</div>';
+    if (indoor)    metaRows += '<div><strong>Indoors/Outdoors:</strong> ' + indoor + '</div>';
+    if (signage)   metaRows += '<div><strong>Camera signage visible?</strong> ' + signage + '</div>';
+    if (accuracy)  metaRows += '<div><strong>GPS accuracy:</strong> ' + accuracy + '</div>';
+    if (props.created_at)  metaRows += '<div><strong>Spotted at:</strong> ' + props.created_at + '</div>';
 
-    // Build popup HTML for a feature
-    function buildPopup(feature) {
-      const p = feature.properties || {};
-      const kind = p['3_What_kind_of_camer'] || 'Camera';
-      const img = p.image_url;
+    var html =
+      '<div class="popup-content">' +
+        img +
+        '<div class="popup-meta">' +
+          '<div><strong>' + title + '</strong></div>' +
+          metaRows +
+        '</div>' +
+      '</div>';
 
-      let html = `<div class="popup">`;
-      html += `<h3>${escapeHtml(kind)}</h3>`;
+    return html;
+  }
 
-      if (img) {
-        html += `<img src="${encodeURI(img)}" alt="Camera thumbnail" loading="lazy">`;
-      } else {
-        html += `<div class="meta">No image available</div>`;
-      }
+  // Load the GeoJSON you saved
+  fetch('camera-spotting-tour.geojson')
+    .then(function(res){
+      if(!res.ok) { throw new Error('Could not load camera-spotting-tour.geojson'); }
+      return res.json();
+    })
+    .then(function(geojson){
+      var bounds = [];
 
-      // Add the requested fields as Q&A blocks (only if the value exists)
-      FIELD_LABELS.forEach(({ key, label }) => {
-        const val = p[key];
-        if (val !== undefined && val !== null && String(val).trim() !== '') {
-          html += `
-            <div class="qa">
-              <div class="q">${escapeHtml(label)}</div>
-              <div class="a">${escapeHtml(String(val))}</div>
-            </div>`;
-        }
-      });
+      // We'll create a LayerGroup so we can add marker + circle per feature
+      var group = L.layerGroup();
 
-      html += `</div>`;
-      return html;
-    }
+      (geojson.features || []).forEach(function(feat){
+        if (!feat.geometry || feat.geometry.type !== 'Point') return;
+        var coords = feat.geometry.coordinates;
+        if (!Array.isArray(coords) || coords.length < 2) return;
 
-    // Load GeoJSON and add to map
-    fetch('CCTV-Cameras.geojson')
-      .then(r => r.json())
-      .then(geojson => {
-        const layer = L.geoJSON(geojson, {
-          pointToLayer: (feature, latlng) => dotMarker(latlng),
-          onEachFeature: (feature, marker) => {
-            marker.bindPopup(buildPopup(feature), { maxWidth: 380 });
-          }
-        }).addTo(map);
+        var lng = coords[0];
+        var lat = coords[1];
+        var props = feat.properties || {};
 
-        // Fit map to data
-        try {
-          map.fitBounds(layer.getBounds(), { padding: [20, 20] });
-        } catch (e) {
-          map.setView([51.92, 4.48], 12); // fallback
-        }
-      })
-      .catch(err => {
-        console.error('Failed to load GeoJSON:', err);
-        alert('Could not load CCTV-Cameras.geojson. Is your local server running in this folder?');
-      });
-  </script>
-</body>
-</html>
+        // Marker
+        var marker = L.circleMarker([lat, lng], {
+          radius: 6,
+          color: '#ffffff',
+          weight: 2,
+          fillColor: '#1d4ed8',
+          fillOpacity: 0.8
+        });
+
+        // Popup on marker
+        marker.bindPopup(buildPopupHTML(props), {
+          maxWidth:
