@@ -1,0 +1,2997 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475442,
+          51.91683
+        ]
+      },
+      "properties": {
+        "camera_type": "It's a camera, but I don't know what kind. ",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=22f5f8e0-8a41-4bb8-9f40-4ea1520d4252_1761657035.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477607,
+          51.916845
+        ]
+      },
+      "properties": {
+        "camera_type": "360 Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=e2a79471-c523-4170-ac4d-cb300301c171_1761656816.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.478484,
+          51.91716
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=ce2cdf07-9276-4be4-9717-9ebed4f95ec1_1761656743.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.479017,
+          51.917316
+        ]
+      },
+      "properties": {
+        "camera_type": "PTZ (Pan Tilt Zoom) Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=516ebb91-1704-4f3a-8b05-d943c5cf8585_1761656669.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.479423,
+          51.917187
+        ]
+      },
+      "properties": {
+        "camera_type": "C-Mount Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=84a0d46d-7532-46ed-8dd1-ceb205e3ac71_1761656614.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.479826,
+          51.917336
+        ]
+      },
+      "properties": {
+        "camera_type": "PTZ (Pan Tilt Zoom) Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=beb687cd-f75a-4c95-badd-34c2f8099f64_1761656507.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.479737,
+          51.917356
+        ]
+      },
+      "properties": {
+        "camera_type": "C-Mount Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=a55df932-a118-4772-b761-eeb7e9e90ee2_1761656477.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.476512,
+          51.907671
+        ]
+      },
+      "properties": {
+        "camera_type": "It's a camera, but I don't know what kind. ",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=0de12191-b011-473b-95bf-1c0319063c9c_1761657053.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477936,
+          51.909875
+        ]
+      },
+      "properties": {
+        "camera_type": "It's a camera, but I don't know what kind. ",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=00a84eeb-11dd-4d18-be34-904c5efa6954_1761656477.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.476225,
+          51.91085
+        ]
+      },
+      "properties": {
+        "camera_type": "No clue, it's a \"Unidentified Hanging Object\" ",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=25408d8f-59f6-4fc8-99da-bacf669ef3cd_1761656177.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475631,
+          51.910728
+        ]
+      },
+      "properties": {
+        "camera_type": "C-Mount Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=821d7609-ba68-4380-addf-4332f3eac0ce_1761656080.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477278,
+          51.915696
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=406c92b1-b1e5-4e55-894e-36ab6a00c111_1761656986.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.473943,
+          51.910633
+        ]
+      },
+      "properties": {
+        "camera_type": "No clue, it's a \"Unidentified Hanging Object\" ",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=ba493e42-7d76-4c46-b0e2-c63f0798b2c6_1761655889.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477532,
+          51.915791
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=68467a81-8558-4fe2-9936-79bb4c3ec67e_1761656949.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.47306,
+          51.910494
+        ]
+      },
+      "properties": {
+        "camera_type": "No clue, it's a \"Unidentified Hanging Object\" ",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=d9691fe9-f893-4d74-bcd4-b3ed395e134b_1761655699.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475908,
+          51.907448
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=056ee32d-6745-4731-afec-cdc3d234d3d0_1761657189.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477564,
+          51.915742
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=e8a0e40f-65ad-41e0-ae01-fb834e89219d_1761656908.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.472738,
+          51.910862
+        ]
+      },
+      "properties": {
+        "camera_type": "No clue, it's a \"Unidentified Hanging Object\" ",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=04c5b62a-bc16-4c17-8fc6-089845d9a5dc_1761655545.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475929,
+          51.907627
+        ]
+      },
+      "properties": {
+        "camera_type": "Bullet Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=e1fd3702-4206-4cac-823f-f305a8ba08c5_1761657139.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.480207,
+          51.916914
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=3508d0c0-e77e-4003-80d7-d5597f2ba96f_1761656618.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.472946,
+          51.911071
+        ]
+      },
+      "properties": {
+        "camera_type": "PTZ (Pan Tilt Zoom) Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=ab338894-3924-40f3-90e4-5e60a84b2559_1761655446.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.476407,
+          51.907754
+        ]
+      },
+      "properties": {
+        "camera_type": "Doorbell Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=44becdd1-7629-4a9e-84e2-d1b3314200bc_1761657053.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.480276,
+          51.918054
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=70d5959a-15ec-457e-86b5-190f0b5281aa_1761656438.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.47301,
+          51.911222
+        ]
+      },
+      "properties": {
+        "camera_type": "No clue, it's a \"Unidentified Hanging Object\" ",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=2f1fc014-e4c4-481e-a7ef-116c0675278a_1761655376.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.47815,
+          51.909848
+        ]
+      },
+      "properties": {
+        "camera_type": "Doorbell Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=97c0dc5a-8907-42dc-8808-73aa1206c9ba_1761656554.jpg",
+        "indoor_outdoor": "Indoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.479339,
+          51.918473
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=ff356fac-c83d-4c0e-aa08-d7a42ac25218_1761656226.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.47277,
+          51.912973
+        ]
+      },
+      "properties": {
+        "camera_type": "No clue, it's a \"Unidentified Hanging Object\" ",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=b3c59147-6dd2-4408-8600-72dafc137805_1761654800.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477971,
+          51.909824
+        ]
+      },
+      "properties": {
+        "camera_type": "No clue, it's a \"Unidentified Hanging Object\" ",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=a3c21f4f-dcd3-4843-ab1c-d24f4ce92789_1761656509.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.479337,
+          51.91842
+        ]
+      },
+      "properties": {
+        "camera_type": "Doorbell Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=74f10150-cc6b-4e7e-a539-f0f2ba12fed1_1761656185.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.4723,
+          51.913656
+        ]
+      },
+      "properties": {
+        "camera_type": "No clue, it's a \"Unidentified Hanging Object\" ",
+        "image_url": "",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477873,
+          51.909873
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=1f71ede9-2613-44bf-b205-497b1d952e47_1761656449.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.478352,
+          51.918147
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=00e1f951-bd2b-44eb-ab81-6397f8292f5c_1761656075.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.470656,
+          51.914167
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=10fb9982-e895-4d90-aed7-c9849c917603_1761654513.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.476835,
+          51.910486
+        ]
+      },
+      "properties": {
+        "camera_type": "Doorbell Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=31b0206d-d3c2-43a1-b277-a3a09935e474_1761656297.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.478264,
+          51.918288
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=ead2e2b3-d067-4c13-8f29-4a4892736a24_1761656002.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.476743,
+          51.917959
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=8d9818df-079f-4cb3-8b9e-6389b306655a_1761655878.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.473038,
+          51.910589
+        ]
+      },
+      "properties": {
+        "camera_type": "Bullet Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=22d4edb1-f7d2-468b-a421-bfef5bbef208_1761655718.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.476277,
+          51.917856
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=647c63dd-f6ce-4886-a9ff-142e6ce8fec0_1761655813.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.472857,
+          51.910625
+        ]
+      },
+      "properties": {
+        "camera_type": "PTZ (Pan Tilt Zoom) Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=2842a1c2-ab80-4d7f-b00a-fb242e06b8e7_1761655619.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475994,
+          51.917804
+        ]
+      },
+      "properties": {
+        "camera_type": "Doorbell Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=4f559f05-aefe-4ce5-a061-7729ae953fda_1761655760.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.473047,
+          51.911058
+        ]
+      },
+      "properties": {
+        "camera_type": "PTZ (Pan Tilt Zoom) Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=bed5e7e4-e4bd-4ae5-9053-f3db70462328_1761655480.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475676,
+          51.917769
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=6c9797a9-892c-4dfb-8464-9a2ba53847ec_1761655710.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.472983,
+          51.91114
+        ]
+      },
+      "properties": {
+        "camera_type": "Bullet Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=cc7ba3aa-c9fa-4eab-a97d-a5c460cd62d1_1761655415.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475567,
+          51.917674
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=2d02ac10-7a76-4c9d-be4e-763f92d79071_1761655630.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.471868,
+          51.91282
+        ]
+      },
+      "properties": {
+        "camera_type": "Bullet Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=fd60c747-8235-4731-9c90-53d78d0d3f2e_1761655080.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475284,
+          51.917563
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=be25bd40-793e-4061-8c26-08d774a51a0a_1761655561.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475079,
+          51.917568
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=58c7ce74-ffc0-421e-ac95-6ddb69c4ea50_1761655478.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.47275,
+          51.912938
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=9b0902ea-2b41-413c-a148-6edc105e5df9_1761654902.jpg",
+        "indoor_outdoor": "Indoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.474673,
+          51.917475
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=d896e531-19c0-4bc5-8388-094f75c9fca8_1761655403.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.47224,
+          51.913622
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=b25ecae2-8496-4e65-9aec-9b703a09de01_1761654709.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.474443,
+          51.917472
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=b5fbcde7-4110-4075-b082-59761cc58f1f_1761655326.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.472407,
+          51.913607
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=f101e044-5e93-4076-a22a-92373bab3157_1761654652.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.474148,
+          51.917371
+        ]
+      },
+      "properties": {
+        "camera_type": "PTZ (Pan Tilt Zoom) Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=f1861132-3289-4b8a-a84b-67e9f0322dda_1761655172.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.47227,
+          51.913607
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=d33118ce-8974-4137-a8ea-be19acc27143_1761654550.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.473035,
+          51.91633
+        ]
+      },
+      "properties": {
+        "camera_type": "Traffic Enforcement Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=5fb64ce7-2e6f-4f7f-8bea-305682e60804_1761654919.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.472134,
+          51.915708
+        ]
+      },
+      "properties": {
+        "camera_type": "PTZ (Pan Tilt Zoom) Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=eadc391b-a877-4567-9c21-88021bceb9d5_1761654730.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.471676,
+          51.915239
+        ]
+      },
+      "properties": {
+        "camera_type": "C-Mount Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=80ca3b42-31fd-455d-9e1a-dc1efab79b2f_1761654624.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.471715,
+          51.914384
+        ]
+      },
+      "properties": {
+        "camera_type": "360 Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=d7b84406-6a83-4350-9519-9d25b4c96798_1761654474.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.476255,
+          51.915421
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=0b72ca41-f5be-4692-b8bd-7137adc6a308_1761657045.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.4766,
+          51.915474
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=c819ed48-bf76-4e90-9938-f3bc137c22bf_1761656982.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477392,
+          51.915716
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=8bbda902-4ce9-4d06-8b62-d0d425bf3158_1761656888.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477704,
+          51.915879
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=8bc74906-b6eb-43fd-8e08-5bca11bc760d_1761655883.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.47769,
+          51.915861
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=f8b04237-d348-4579-9b7f-439d2d51f74c_1761655857.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477692,
+          51.915788
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=280d9595-b43a-4069-aa92-1464a4b2cf90_1761655788.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477654,
+          51.915801
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=82aadd31-25c2-4fab-9e33-14ddb01e028c_1761655763.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477398,
+          51.915751
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=f08b4fde-bb2e-4af6-99e6-4051b20ef995_1761655682.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477333,
+          51.915722
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=326c9dc8-d0b5-406c-81ef-74dc0a677df0_1761655623.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.476713,
+          51.915577
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=c71b15db-15f7-45d2-b177-dd61b492cabb_1761655503.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.476511,
+          51.915426
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=8640b401-bb33-4f42-af99-b2bbf4d4005d_1761656993.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.476686,
+          51.915583
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=53f13cd9-5622-46eb-acf2-1a4e26d1e426_1761655425.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477462,
+          51.915705
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=0e34093b-e2f6-42af-974f-ae896d6c83ce_1761656897.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.476698,
+          51.915576
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=a8e2c861-180f-4509-8ba6-e25c4608dbd0_1761655396.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477462,
+          51.91559
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=1e6abecd-bef5-4ed5-9ef6-b32319997a65_1761656861.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.476176,
+          51.915429
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=846eee3d-3f36-4ff3-bb84-3699f8e41f12_1761655299.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.479478,
+          51.91627
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=01f0e251-938e-485e-8b94-3562a708bc13_1761656666.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475924,
+          51.915375
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=845ace66-e071-480b-9b3c-89d778062e56_1761655218.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.47943,
+          51.91623
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=2cf85f6b-a972-4634-9d22-e92cfe12e169_1761656637.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475919,
+          51.915343
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=daeda8a4-50d9-49db-a8e8-ffc454358391_1761655185.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.478946,
+          51.916173
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=6998e26c-085a-4008-9205-3d68c3e2694e_1761656529.jpg",
+        "indoor_outdoor": "Indoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475876,
+          51.915329
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=e9e6aaff-f782-4b66-a498-7537ae75b162_1761655157.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477852,
+          51.915763
+        ]
+      },
+      "properties": {
+        "camera_type": "360 Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=1d77a10c-76d2-4568-94e7-33bec13c045d_1761655878.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475505,
+          51.915243
+        ]
+      },
+      "properties": {
+        "camera_type": "Bullet Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=50d87a78-29d6-451a-8d7f-59658f1d2c1e_1761655029.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.47762,
+          51.915807
+        ]
+      },
+      "properties": {
+        "camera_type": "Bullet Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=2e1e0590-c1e9-490a-b877-aeed9790cf1e_1761655803.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.47535,
+          51.915163
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=edfd2a51-e582-42fd-9c73-4d06450a387e_1761654865.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477595,
+          51.915801
+        ]
+      },
+      "properties": {
+        "camera_type": "Bullet Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=0bf0a604-df9d-44a7-9323-e5509c144c59_1761655772.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475246,
+          51.915204
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=e15fdce1-4aae-42b7-bbd9-4cfd77495d61_1761654824.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477547,
+          51.915822
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=7a900da6-ca18-444c-91c0-b484f7ccaf4a_1761655712.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.474645,
+          51.915129
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=1dea3566-fcf9-4b5e-b8ee-8c0f9ce228b2_1761654767.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477289,
+          51.915676
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=d9b13e92-da01-498f-97c2-051421fc8f3c_1761655617.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477166,
+          51.91559
+        ]
+      },
+      "properties": {
+        "camera_type": "Doorbell Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=fda8d09b-f56f-4558-b20e-ed0b61d1e623_1761655573.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.476455,
+          51.915692
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=b452543f-d440-4974-aedf-46192f134632_1761655461.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475967,
+          51.915358
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=b89761fd-f32d-4f19-941c-e2640d6a2012_1761655215.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.47582,
+          51.915331
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=e6a47d2b-5a93-42b2-b549-d488084d3d0c_1761655119.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475579,
+          51.915208
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=b35c5167-4883-4eff-b602-70a188edaa86_1761655065.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475383,
+          51.915177
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=511d2d7f-00cd-431e-8da2-fc001c1d7332_1761654981.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475384,
+          51.915187
+        ]
+      },
+      "properties": {
+        "camera_type": "Doorbell Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=96fbf82a-647f-4947-a8ad-1f8b04b9905b_1761654911.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475083,
+          51.915175
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=72143506-0b29-4cfb-8fad-f43dff09fd28_1761654854.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475003,
+          51.915258
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=2d2f3194-cc11-418e-9daf-c3d62f7b5822_1761654741.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.473749,
+          51.91476
+        ]
+      },
+      "properties": {
+        "camera_type": "Doorbell Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=51cde562-af0d-4b2a-b73e-5f32e899c6b1_1761654527.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.474852,
+          51.915467
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=9af50831-1154-467d-a181-730399335bc9_1761657330.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.47432,
+          51.916182
+        ]
+      },
+      "properties": {
+        "camera_type": "C-Mount Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=31e203e6-5990-46d0-9d45-cb0e349aca3a_1761657197.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477386,
+          51.91577
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=8fe76705-cf21-4973-a24e-6a355e010c47_1761656966.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477989,
+          51.915802
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=1db0c631-7daf-4eeb-b215-fe8507603181_1761656889.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.478658,
+          51.916038
+        ]
+      },
+      "properties": {
+        "camera_type": "Bullet Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=fdb78434-5b16-4650-a96e-e3ffbd6b263b_1761656801.jpg",
+        "indoor_outdoor": "Indoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.47981,
+          51.917545
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=a2351aae-994f-4894-be5a-71a9fca6e70a_1761656474.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.479425,
+          51.91845
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=a35a9526-5f9e-4f9c-a282-b1c57951de55_1761656239.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.479256,
+          51.918427
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=4f39ed3b-5254-4877-a825-873688727ac6_1761656196.jpg",
+        "indoor_outdoor": "Indoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.478283,
+          51.918205
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=07831b96-8817-4d53-9054-3c9953fd10b4_1761656078.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.478331,
+          51.918217
+        ]
+      },
+      "properties": {
+        "camera_type": "C-Mount Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=7ae9c962-52f3-4e59-b671-c888011a2b70_1761656026.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.47635,
+          51.917882
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=d80ce6c7-3ca3-4cb2-9561-0dc670d0af46_1761655800.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475846,
+          51.917779
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=eb4d8267-9d5a-4fbb-959f-9b8b8c7accb2_1761655738.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475715,
+          51.917679
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=48f3d6cb-60e8-4420-9850-090f03e5f99b_1761655668.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475351,
+          51.91755
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=7cd7ad34-e92a-4e3a-9f91-0760de1aa8d5_1761655574.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475165,
+          51.917638
+        ]
+      },
+      "properties": {
+        "camera_type": "Doorbell Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=4ef8fe23-5621-483c-8613-b156bcec3eee_1761655540.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.467341,
+          51.914702
+        ]
+      },
+      "properties": {
+        "camera_type": "Doorbell Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=55cf4ba8-470d-4a95-b053-2946a4b2c2da_1761656912.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.467444,
+          51.914907
+        ]
+      },
+      "properties": {
+        "camera_type": "Doorbell Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=bab1896b-a447-447c-b2a2-b51f35900652_1761656878.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.46807,
+          51.915243
+        ]
+      },
+      "properties": {
+        "camera_type": "Doorbell Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=801f7354-1ad9-4194-b43d-c2d32a315f7d_1761656798.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.468446,
+          51.915372
+        ]
+      },
+      "properties": {
+        "camera_type": "Doorbell Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=bc40e923-56ab-4e4b-b06b-6e7d923f94e6_1761656729.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.468804,
+          51.915488
+        ]
+      },
+      "properties": {
+        "camera_type": "Doorbell Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=b3b778ec-7cfc-4f5a-8514-3faa60ea017f_1761656670.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.468909,
+          51.915495
+        ]
+      },
+      "properties": {
+        "camera_type": "Doorbell Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=841f4690-7870-4932-a3c4-d362e64f4ef5_1761656634.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.469346,
+          51.915645
+        ]
+      },
+      "properties": {
+        "camera_type": "Bullet Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=eef4a263-842e-4634-ba5c-84718886075d_1761656553.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.470127,
+          51.916399
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=c993b4f3-1916-4c06-b3c7-085aad379c12_1761656430.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.470065,
+          51.916436
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=eb2d72f1-5319-4a58-9713-d62efdc18cab_1761656391.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.470026,
+          51.916487
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=1e0974ff-b5f2-4223-a25a-dbbf9df705d3_1761656351.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.469727,
+          51.916388
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=7b64fa8a-4f4d-484e-9c35-bbbac4ef3352_1761656286.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.469614,
+          51.916552
+        ]
+      },
+      "properties": {
+        "camera_type": "No clue, it's a \"Unidentified Hanging Object\" ",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=fbb59a02-0c45-49ec-af48-ac1c2a33513c_1761656208.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.46948,
+          51.916502
+        ]
+      },
+      "properties": {
+        "camera_type": "Bullet Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=7d3b66bd-e98f-43cd-9f51-ff2551adc933_1761656183.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.469632,
+          51.916325
+        ]
+      },
+      "properties": {
+        "camera_type": "No clue, it's a \"Unidentified Hanging Object\" ",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=06a7570b-b40d-448f-a51e-faa961efb632_1761656134.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.469561,
+          51.916206
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=95b47bf3-f858-4f1e-972c-498c6661b830_1761656057.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.469019,
+          51.916219
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=be1cd745-a2d0-4f49-9f1e-9ef70263e766_1761656004.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.468455,
+          51.916039
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=dfe4039a-1114-42c1-b9f5-07844c62d473_1761655928.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.468418,
+          51.91601
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=a7afb718-e19f-4e3f-a224-090756e2efbf_1761655880.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.468274,
+          51.915938
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=9b77b469-534b-446a-92d0-6d5b7fb76ea3_1761655846.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.46794,
+          51.916164
+        ]
+      },
+      "properties": {
+        "camera_type": "No clue, it's a \"Unidentified Hanging Object\" ",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=0d23bf8a-b210-43ed-9ae3-cb1841fecd6a_1761655762.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.467282,
+          51.91577
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=3f867341-c13d-4c7b-aca8-b23807da57cc_1761655633.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.466848,
+          51.915768
+        ]
+      },
+      "properties": {
+        "camera_type": "Bullet Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=d6820d76-d3dd-45b8-b4a7-f0e62684e04f_1761655578.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.466413,
+          51.916096
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=99975717-f684-4d0b-ac19-47eb3275dcea_1761655487.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.466253,
+          51.916251
+        ]
+      },
+      "properties": {
+        "camera_type": "Bullet Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=deb2cb44-4f51-4aed-b566-936e52598358_1761655362.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.466206,
+          51.915875
+        ]
+      },
+      "properties": {
+        "camera_type": "360 Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=658d50f1-dbf1-4a6e-a71f-dccde50ea7dc_1761655285.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.466402,
+          51.915695
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=af8d35d2-532d-4c1b-92b4-5fa6b86d1aa1_1761655207.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.466402,
+          51.915645
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=4752d24a-deb3-4f93-8acf-7eb7fe7ae0ac_1761655180.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.466464,
+          51.915653
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=75c3ebe9-408c-46bc-ae20-6f99c23cce21_1761655154.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.466363,
+          51.915605
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=23063f96-2e4e-46cc-844d-6dcf660c924a_1761655117.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.466295,
+          51.915533
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=c8aa5eeb-bbda-4b74-b5db-80c1ac7cb9e3_1761655095.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.466232,
+          51.915325
+        ]
+      },
+      "properties": {
+        "camera_type": "360 Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=5baeb8a3-0a46-46df-b122-20ccf224203f_1761655027.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.466108,
+          51.915231
+        ]
+      },
+      "properties": {
+        "camera_type": "PTZ (Pan Tilt Zoom) Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=9297fd2f-02dd-4034-88dd-109ba710f304_1761654990.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.466168,
+          51.915079
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=d1cbdad0-4729-48fd-8586-c77d22c6d5b1_1761654952.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.465971,
+          51.914928
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=cfb1c685-5cb0-4c0c-8878-3ad6e210db6d_1761654902.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.466439,
+          51.914802
+        ]
+      },
+      "properties": {
+        "camera_type": "C-Mount Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=b3562ce8-ed01-4c83-acaf-6a39a9fdbe47_1761654761.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.474626,
+          51.915732
+        ]
+      },
+      "properties": {
+        "camera_type": "Doorbell Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=25fca0a2-3f40-4511-91ae-8081dca24523_1761657280.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.474291,
+          51.916494
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=7dd85500-77dc-4641-b34c-36c8de78b97b_1761657175.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.476978,
+          51.916984
+        ]
+      },
+      "properties": {
+        "camera_type": "C-Mount Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=81c7d755-3817-4f1e-b56d-db6fe67ad70c_1761656942.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477286,
+          51.916798
+        ]
+      },
+      "properties": {
+        "camera_type": "C-Mount Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=be80bcb7-db73-44c6-a831-ce2e07499814_1761656890.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.478662,
+          51.91713
+        ]
+      },
+      "properties": {
+        "camera_type": "Doorbell Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=51163224-638b-43a0-a0d4-f6461738900e_1761656734.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.478896,
+          51.917629
+        ]
+      },
+      "properties": {
+        "camera_type": "Bullet Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=1348f89d-cc77-4e4a-9e7d-b256ecb25b26_1761656638.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.479979,
+          51.917241
+        ]
+      },
+      "properties": {
+        "camera_type": "Bullet Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=4588252d-4889-4c98-937a-e8f445534a75_1761656503.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.479942,
+          51.917202
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=82afd445-d4a5-4db8-a5df-5cb7541a97c6_1761656463.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.479803,
+          51.915996
+        ]
+      },
+      "properties": {
+        "camera_type": "Bullet Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=02d3193e-3716-4343-b6dd-31a5f23f2893_1761656245.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.479916,
+          51.915543
+        ]
+      },
+      "properties": {
+        "camera_type": "Doorbell Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=24aac0a2-bfe9-4dd0-8354-762fc349dc28_1761656136.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.479962,
+          51.914503
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=63f67218-5aea-47f9-a962-631856a87dc8_1761655969.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.479128,
+          51.914168
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=3a32164b-bb9c-4183-8dad-4b2a8d2b3ba2_1761655790.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.478226,
+          51.914007
+        ]
+      },
+      "properties": {
+        "camera_type": "Doorbell Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=e72c2fa7-980c-4ee1-8097-82577f6b55ac_1761655675.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477634,
+          51.914189
+        ]
+      },
+      "properties": {
+        "camera_type": "Doorbell Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=42189f8e-c263-44e3-82fa-181e06d639f9_1761655543.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477144,
+          51.914824
+        ]
+      },
+      "properties": {
+        "camera_type": "C-Mount Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=42c3e1e9-c8f2-42f6-8d52-f5e1faf7b561_1761655391.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.47637,
+          51.915335
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=6ce62b4e-081e-46bf-937f-3cc03c7ba70c_1761655267.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.476294,
+          51.915321
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=55675c7d-7c79-465c-9713-9d08dbfffe33_1761655206.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.476259,
+          51.915294
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=07e0dfdd-c34f-4647-bd5e-9051604057ee_1761655168.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475651,
+          51.915172
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=66a2901a-b588-41bb-bf0f-c266c0b51d85_1761655007.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475622,
+          51.915173
+        ]
+      },
+      "properties": {
+        "camera_type": "PTZ (Pan Tilt Zoom) Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=7cc2636e-43bc-44f4-9522-ca95ff76ca15_1761654975.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475272,
+          51.915047
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=6a17db36-877d-4a65-8719-be4378efcd75_1761654895.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475509,
+          51.916565
+        ]
+      },
+      "properties": {
+        "camera_type": "It's a camera, but I don't know what kind. ",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=54bac423-51c2-4525-9f49-93119a846809_1761657056.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.478705,
+          51.917679
+        ]
+      },
+      "properties": {
+        "camera_type": "It's a camera, but I don't know what kind. ",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=6a6fb808-09a3-4912-a8fd-8321568716b4_1761656689.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.479862,
+          51.917134
+        ]
+      },
+      "properties": {
+        "camera_type": "C-Mount Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=1606dfb1-9946-4c3c-95d6-164290ed5466_1761656470.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.479838,
+          51.915688
+        ]
+      },
+      "properties": {
+        "camera_type": "Doorbell Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=b980db01-05e1-4fc7-a1b5-9725ae04b3e8_1761656184.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.479607,
+          51.914603
+        ]
+      },
+      "properties": {
+        "camera_type": "C-Mount Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=da6ee02b-ae80-4b73-86a9-91950d5ae10f_1761655856.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.477253,
+          51.914569
+        ]
+      },
+      "properties": {
+        "camera_type": "It's a camera, but I don't know what kind. ",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=07d821c8-391a-4262-962e-d66b301c7851_1761655485.jpg",
+        "indoor_outdoor": "Indoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.476205,
+          51.915324
+        ]
+      },
+      "properties": {
+        "camera_type": "No clue, it's a \"Unidentified Hanging Object\" ",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=fe9f3679-4de9-4349-a7fa-7e64f77215da_1761655157.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475667,
+          51.915237
+        ]
+      },
+      "properties": {
+        "camera_type": "It's a camera, but I don't know what kind. ",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=aab53709-2ce4-4e42-b604-c03b0ffcea7e_1761655047.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475198,
+          51.915008
+        ]
+      },
+      "properties": {
+        "camera_type": "It's a camera, but I don't know what kind. ",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=6a2593df-94b9-4579-9b64-1921440f92cf_1761654971.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.474704,
+          51.917483
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=97aa9e84-d7ea-4151-acb1-ef7536780721_1761655410.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.474327,
+          51.91746
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=4be2cb81-e6b8-4dbf-b299-517eaa8fec8d_1761655337.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.474245,
+          51.917326
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=e8c81707-b9c5-42cb-8a7d-3e588e3f9fa4_1761655231.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.472743,
+          51.916181
+        ]
+      },
+      "properties": {
+        "camera_type": "Turret Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=8e1e6d3b-ff25-4e0a-b855-1c0480dcd2fc_1761654948.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.471923,
+          51.915426
+        ]
+      },
+      "properties": {
+        "camera_type": "Dome Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=bebcedba-ed33-4669-b07a-ee9a1e8b97a5_1761654643.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.47121,
+          51.914333
+        ]
+      },
+      "properties": {
+        "camera_type": "Bullet Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=f1884c94-a97a-49c2-889f-702015dcf122_1761654149.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "Yes"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.475178,
+          51.915071
+        ]
+      },
+      "properties": {
+        "camera_type": "360 Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=3b38ea25-d66c-4449-b09f-85f8e0706c10_1761654867.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.472031,
+          51.914196
+        ]
+      },
+      "properties": {
+        "camera_type": "360 Camera",
+        "image_url": "https://five.epicollect.net/api/media/camera-spotting-tour-010?type=photo&format=entry_original&name=7c2f17a9-0481-4029-9f39-d3caa56f1b15_1761654494.jpg",
+        "indoor_outdoor": "Outdoors",
+        "signage_visible": "No"
+      }
+    }
+  ]
+}
