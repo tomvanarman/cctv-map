@@ -145,6 +145,50 @@
   // We'll collect all lat/lngs from features so we can auto-fit
   var allLatLngs = [];
 
+  // --- NEW: color map for each camera type ---
+  function colorForType(cameraTypeRaw) {
+    // normalize cameraType to make matching a bit safer
+    var t = (cameraTypeRaw || '').toLowerCase().trim();
+
+    // Your desired palette:
+    // Vanal Dome      -> #edc75c
+    // Bullet          -> #fe0301
+    // C-Mount         -> #00ff00
+    // PTZ             -> #2a00ff
+    // Wireless        -> #ff00ff
+    // 360             -> #9511f3
+    // Turret dome     -> #88ffff
+    // Doorbell Cam    -> #0196a8
+
+    // We'll match these against the labels in the data:
+    // "Dome Camera"
+    if (t.includes('dome')) return '#edc75c';
+
+    // "Bullet Camera"
+    if (t.includes('bullet')) return '#fe0301';
+
+    // "C-Mount Camera"
+    if (t.includes('c-mount')) return '#00ff00';
+
+    // "PTZ (Pan Tilt Zoom) Camera"
+    if (t.includes('ptz')) return '#2a00ff';
+
+    // "Wireless Camera"
+    if (t.includes('wireless')) return '#ff00ff';
+
+    // "360 Camera"
+    if (t.includes('360')) return '#9511f3';
+
+    // "Turret Camera" (your palette calls this "Turret dome")
+    if (t.includes('turret')) return '#88ffff';
+
+    // "Doorbell Camera"
+    if (t.includes('doorbell')) return '#0196a8';
+
+    // fallback color for weird / unknown / "Unidentified Hanging Object"
+    return '#666666';
+  }
+
   // Build the popup HTML for each feature
   function buildPopupHTML(props) {
     var cameraType = props.camera_type || 'Camera';
@@ -191,25 +235,28 @@
       var layer = L.geoJSON(geojsonData, {
         pointToLayer: function (feature, latlng) {
           var props = feature.properties || {};
+          var camType = props.camera_type || '';
+          var color = colorForType(camType);
 
-          // Create the main visible marker
+          // Create the main visible marker with per-type color
           var marker = L.circleMarker(latlng, {
             radius: 6,
-            color: '#ffffff',        // marker stroke
+            color: '#ffffff',   // white stroke outline
             weight: 2,
-            fillColor: '#1d4ed8',    // marker fill
-            fillOpacity: 0.8
+            fillColor: color,   // per-type color
+            fillOpacity: 0.85
           });
 
           // Bind popup with camera info
           marker.bindPopup(buildPopupHTML(props));
 
-          // Add a ~10 m viewing distance circle (halo)
+          // Add a ~10 m viewing distance circle (halo).
+          // You could ALSO color this with 'color', if you want same-color halos.
           var circle = L.circle(latlng, {
             radius: 10,               // meters
-            color: '#1d4ed8',
+            color: color,
             weight: 1,
-            fillColor: '#1d4ed8',
+            fillColor: color,
             fillOpacity: 0.15
           });
           circle.addTo(map);
@@ -236,6 +283,7 @@
     });
 })();
 </script>
+
 
 </body>
 </html>
